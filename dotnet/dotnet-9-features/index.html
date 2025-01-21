@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <meta name="description"
-        content="Bu blog .Net ile illgii bilgilerin paylaşıldığı blogdur.">
+    <meta name="description" content="Bu blog .Net ile illgii bilgilerin paylaşıldığı blogdur.">
 
     <link rel="canonical" href="https://berkancelik.github.io/dotnet-information/dotnet-9-features/">
 
@@ -57,8 +56,8 @@
 
     <header class="md-header md-header--shadow" data-md-component="header">
         <nav class="md-header__inner md-grid" aria-label="Başlık">
-            <a href="../.." title=".Net Bilgileri" class="md-header__button md-logo"
-                aria-label=".Net Bilgileri" data-md-component="logo">
+            <a href="../.." title=".Net Bilgileri" class="md-header__button md-logo" aria-label=".Net Bilgileri"
+                data-md-component="logo">
 
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -323,10 +322,76 @@
                                     </li>
 
                                     <li class="md-nav__item">
-                                        <a href="#5-json-serialization"
-                                            class="md-nav__link">
+                                        <a href="#5-json-serialization" class="md-nav__link">
                                             <span class="md-ellipsis">
                                                 5. Gelişmiş JSON Serileştirme
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+
+                                    <li class="md-nav__item">
+                                        <a href="#6-modern-http-client" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                6. Modern HTTP Client
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+
+                                    <li class="md-nav__item">
+                                        <a href="#7-gelişmiş-task-parallel-library" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                7. Gelişmiş Task Parallel Library
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+
+                                    <li class="md-nav__item">
+                                        <a href="#8-better-diagnostic-tools" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                8. Daha İyi Tanılama Araçları
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+
+                                    <li class="md-nav__item">
+                                        <a href="#9-optimized-collections" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                9. Optimize Edilmiş Koleksiyonlar
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+                                    <li class="md-nav__item">
+                                        <a href="#10-enhanced-security" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                10. Geliştirilmiş Güvenlik
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+                                    <li class="md-nav__item">
+                                        <a href="#5-json-serialization" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                5. Gelişmiş JSON Serileştirme
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+                                    <li class="md-nav__item">
+                                        <a href="#11-ai-integration" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                11. Yapay Zeka Entegrasyonu
                                             </span>
                                         </a>
 
@@ -345,8 +410,8 @@
                 <div class="md-content" data-md-component="content">
                     <article class="md-content__inner md-typeset">
 
-                        <h1 id="dotnet9-features">.NET 9 Yeni Özellikler<a class="headerlink"
-                                href="#dotnet9-features" title="Permanent link">&para;</a></h1>
+                        <h1 id="dotnet9-features">.NET 9 Yeni Özellikler<a class="headerlink" href="#dotnet9-features"
+                                title="Permanent link">&para;</a></h1>
                         <p>.NET 9, geliştirici deneyimini artırmayı ve modern uygulama geliştirme ihtiyaçlarını
                             karşılamayı amaçlayan bir dizi yenilik ve geliştirme ile birlikte geliyor. Aşağıda, bu
                             sürümde öne çıkan özellikler detaylı bir şekilde incelenmiştir.</p>
@@ -446,6 +511,86 @@
 
                         <p>Bu özelliklerle birlikte .NET 9, modern yazılım geliştirme ihtiyaçlarını karşılamak için
                             güçlü bir platform sunmaya devam ediyor.</p>
+
+
+                        <h2 id="6-modern-http-client">6. Modern HTTP Client<a class="headerlink"
+                                href="#6-modern-http-client" title="Permanent link">&para;</a></h2>
+                        <p>.NET 9 ile <strong>HttpClient</strong> performansı ve kullanım kolaylığı açısından daha da
+                            geliştirilmiştir.</p>
+                        <p>✅ <strong>Özellikler:</strong></p>
+                        <ul>
+                            <li>Bağlantı havuzu optimizasyonları</li>
+                            <li>HTTP/3 desteği</li>
+                            <li>Zaman aşımı ve hata yönetiminde geliştirilmiş kontrol</li>
+                        </ul>
+                        <p>✅ <strong>Örnek Kullanım:</strong></p>
+                        <div class="highlight">
+                            <pre><code><span class="kt">using</span> <span class="n">System.Net.Http</span>;
+<span class="kt">var</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HttpClient</span>();
+<span class="kt">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"User-Agent"</span>, <span class="s">"Dotnet9Demo"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="s">"https://api.example.com/data"</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">IsSuccessStatusCode</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsStringAsync</span><span class="p">();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+                        </div>
+                        <hr />
+
+                        <h2 id="7-gelişmiş-task-parallel-library">7. Gelişmiş Task Parallel Library<a class="headerlink"
+                                href="#7-gelişmiş-task-parallel-library" title="Permanent link">&para;</a></h2>
+                        <p>.NET 9 ile Task Parallel Library (TPL) daha da güçlendirilmiştir.</p>
+                        
+                        <p>✅ <strong>Özellikler:</strong></p>
+                        <ul>
+                            <li><code>Parallel.ForEachAsync</code> ile asenkron döngülerde daha yüksek performans</li>
+                            <li>Task durumunu daha iyi izlemek için yeni API'ler</li>
+                            <li>Daha kolay iptal yönetimi</li>
+                        </ul>
+                        <hr />
+
+                        <h2 id="8-better-diagnostic-tools">8. Daha İyi Tanılama Araçları<a class="headerlink"
+                                href="#8-better-diagnostic-tools" title="Permanent link">&para;</a></h2>
+                        <p>.NET 9, hata ayıklama ve performans ölçüm araçlarında bir dizi iyileştirme sunar.</p>
+                        <p>✅ <strong>Özellikler:</strong></p>
+                        <ul>
+                            <li>Yerleşik <code>dotnet-diagnostics</code> komutlarında daha fazla veri</li>
+                            <li>Uygulama davranışını gerçek zamanlı izleme</li>
+                            <li>Thread durumlarının daha iyi görüntülenmesi</li>
+                        </ul>
+                        <hr />
+
+                        <h2 id="9-optimized-collections">9. Optimize Edilmiş Koleksiyonlar<a class="headerlink"
+                                href="#9-optimized-collections" title="Permanent link">&para;</a></h2>
+                        <p>Koleksiyonlar üzerinde yapılan iyileştirmelerle .NET 9 daha hızlı ve hafif bir deneyim
+                            sunuyor.</p>
+                        <p>✅ <strong>Özellikler:</strong></p>
+                        <ul>
+                            <li>Daha hızlı <code>Dictionary</code> işlemleri</li>
+                            <li><code>Span</code> ve <code>Memory</code> türleriyle daha iyi entegrasyon</li>
+                        </ul>
+                        <hr />
+
+                        <h2 id="10-enhanced-security">10. Geliştirilmiş Güvenlik<a class="headerlink"
+                                href="#10-enhanced-security" title="Permanent link">&para;</a></h2>
+                        <p>.NET 9, güvenlik mekanizmalarını daha güçlü hale getirmiştir.</p>
+                        <p>✅ <strong>Özellikler:</strong></p>
+                        <ul>
+                            <li>Yerleşik JWT doğrulama desteği</li>
+                            <li>Kişisel verilerin korunması için yeni API'ler</li>
+                        </ul>
+                        <hr />
+
+                        <h2 id="11-ai-integration">11. Yapay Zeka Entegrasyonu<a class="headerlink"
+                                href="#11-ai-integration" title="Permanent link">&para;</a></h2>
+                        <p>.NET 9, yapay zeka ve makine öğrenimi senaryolarında daha iyi destek sağlar.</p>
+                        <p>✅ <strong>Özellikler:</strong></p>
+                        <ul>
+                            <li>ONNX modelleri için genişletilmiş destek</li>
+                            <li>Daha kolay ML.NET entegrasyonu</li>
+                        </ul>
+                        <hr />
 
 
                     </article>
