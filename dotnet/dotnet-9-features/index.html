@@ -234,18 +234,85 @@
 
                                 <ul class="md-nav__list" data-md-scrollfix>
 
-                                    <li class="md-nav__item">
-                                        <a href="../.." class="md-nav__link">
+
+
+
+
+
+
+
+
+                                    <li class="md-nav__item md-nav__item--active">
+
+                                        <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+
+
+
+
+
+                                        <label class="md-nav__link md-nav__link--active" for="__toc">
+
+
+                                            <span class="md-ellipsis">
+                                                Ana Sayfa
+                                            </span>
+
+
+                                            <span class="md-nav__icon md-icon"></span>
+                                        </label>
+
+                                        <a href="." class="md-nav__link md-nav__link--active">
                                             <span class="md-ellipsis">
                                                 Ana Sayfa
                                             </span>
                                         </a>
+
+
+                                        <nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+
+
+                                            <label class="md-nav__title" for="__toc">
+                                                <span class="md-nav__icon md-icon"></span>
+                                                İçindekiler
+                                            </label>
+                                            <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+
+                                                <li class="md-nav__item">
+                                                    <a href="#icerik-baslklar" class="md-nav__link">
+                                                        <span class="md-ellipsis">
+                                                            İçerik Başlıkları
+                                                        </span>
+                                                    </a>
+
+                                                </li>
+
+                                                <li class="md-nav__item">
+                                                    <a href="#destek-olun" class="md-nav__link">
+                                                        <span class="md-ellipsis">
+                                                            Destek Olun
+                                                        </span>
+                                                    </a>
+
+                                                </li>
+
+                                                <li class="md-nav__item">
+                                                    <a href="#iletisim" class="md-nav__link">
+                                                        <span class="md-ellipsis">
+                                                            İletişim
+                                                        </span>
+                                                    </a>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </nav>
                                     </li>
 
 
-                                    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+                                    <li class="md-nav__item md-nav__item--nested">
 
-                                        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+                                        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
 
                                         <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
 
@@ -253,20 +320,72 @@
                                                 .Net
                                             </span>
 
+
                                             <span class="md-nav__icon md-icon"></span>
                                         </label>
 
                                         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label"
-                                            aria-expanded="true">
+                                            aria-expanded="false">
                                             <label class="md-nav__title" for="__nav_2">
                                                 <span class="md-nav__icon md-icon"></span>
                                                 .Net
                                             </label>
                                             <ul class="md-nav__list" data-md-scrollfix>
 
+
+                                                <li class="md-nav__item">
+                                                    <a href="dotnet/dotnet-9-features/" class="md-nav__link">
+
+                                                        <span class="md-ellipsis">
+                                                            .Net 9'a Gelen Yenilikler
+                                                        </span>
+                                                    </a>
+                                                </li>
+
                                             </ul>
                                         </nav>
                                     </li>
+
+
+                                    <li class="md-nav__item md-nav__item--nested">
+
+
+
+                                        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+
+
+                                        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+
+
+                                            <span class="md-ellipsis">
+                                                Logging
+                                            </span>
+
+
+                                            <span class="md-nav__icon md-icon"></span>
+                                        </label>
+
+                                        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label"
+                                            aria-expanded="false">
+                                            <label class="md-nav__title" for="__nav_3">
+                                                <span class="md-nav__icon md-icon"></span>
+                                                Logging
+                                            </label>
+                                            <ul class="md-nav__list" data-md-scrollfix>
+
+
+                                                <li class="md-nav__item">
+                                                    <a href="logging/serilog/" class="md-nav__link">
+
+                                                        <span class="md-ellipsis">
+                                                            Serilog
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </li>
+
                                 </ul>
                             </nav>
                         </div>
@@ -299,10 +418,6 @@
                             Logging
                         </label>
                         <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
 
 
 
@@ -493,7 +608,7 @@
                 <div class="md-content" data-md-component="content">
                     <article class="md-content__inner md-typeset">
 
-                        <h1 id="dotnet9-features">.NET 9 Yeni Özellikler<a class="headerlink" href="#dotnet9-features"
+                        <h1 id="dotnet9-features">.NET 9 Yeni Özellikler<a class="headerlink" href="#dotnet-9-features"
                                 title="Permanent link">&para;</a></h1>
                         <p>.NET 9, geliştirici deneyimini artırmayı ve modern uygulama geliştirme ihtiyaçlarını
                             karşılamayı amaçlayan bir dizi yenilik ve geliştirme ile birlikte geliyor. Aşağıda, bu
