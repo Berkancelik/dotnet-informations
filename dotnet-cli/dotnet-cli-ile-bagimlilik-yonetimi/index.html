@@ -2,23 +2,48 @@
 <html lang="tr" class="no-js">
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
 
     <meta name="description" content="Bu blog .Net ile illgii bilgilerin paylaşıldığı blogdur.">
 
 
-    <link rel="canonical" href="https://berkancelik.github.io/dotnet-informations/">
+    <link rel="canonical"
+        href="https://berkancelik.github.io/dotnet-informations/dotnet-cli/dotnet-cli-ile-bagimlilik-yonetimi/">
 
-    <link rel="next" href="dotnet/dotnet-9-features/">
-    <link rel="icon" href="assets/images/favicon.png">
+
+    <link rel="prev" href="../../dotnet/dotnet-9-features/">
+
+
+    <link rel="next" href="../nlog/">
+
+
+    <link rel="icon" href="../../assets/images/favicon.png">
     <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
 
 
-    <title>.Net Bilgileri</title>
 
-    <link rel="stylesheet" href="assets/stylesheets/main.bcfcd587.min.css">
-    <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+    <title>.NET CLI ile Bağımlılık Yönetimi - .Net Bilgileri</title>
+
+
+
+    <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+
+
+    <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+
+
+
+
+
+
+
+
+
+
+
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
@@ -30,9 +55,21 @@
         }
     </style>
 
-    <script>__md_scope = new URL(".", location), __md_hash = e => [...e].reduce((e, _) => (e << 5) - e + _.charCodeAt(0), 0), __md_get = (e, _ = localStorage, t = __md_scope) => JSON.parse(_.getItem(t.pathname + "." + e)), __md_set = (e, _, t = localStorage, a = __md_scope) => { try { t.setItem(a.pathname + "." + e, JSON.stringify(_)) } catch (e) { } }</script>
+
+
+    <script>__md_scope = new URL("../..", location), __md_hash = e => [...e].reduce((e, _) => (e << 5) - e + _.charCodeAt(0), 0), __md_get = (e, _ = localStorage, t = __md_scope) => JSON.parse(_.getItem(t.pathname + "." + e)), __md_set = (e, _, t = localStorage, a = __md_scope) => { try { t.setItem(a.pathname + "." + e, JSON.stringify(_)) } catch (e) { } }</script>
+
+
+
+
+
 
 </head>
+
+
+
+
+
 
 
 
@@ -46,7 +83,7 @@
     <div data-md-component="skip">
 
 
-        <a href="#dotnet-bilgi-platformuna-hos-geldiniz" class="md-skip">
+        <a href="#dotnet-cli-ile-bagimlilik-yonetimi" class="md-skip">
             Ana içeriğe geç
         </a>
 
@@ -56,9 +93,13 @@
     </div>
 
 
+
+
+
+
     <header class="md-header md-header--shadow" data-md-component="header">
         <nav class="md-header__inner md-grid" aria-label="Başlık">
-            <a href="." title=".Net Bilgileri" class="md-header__button md-logo" aria-label=".Net Bilgileri"
+            <a href="../.." title=".Net Bilgileri" class="md-header__button md-logo" aria-label=".Net Bilgileri"
                 data-md-component="logo">
 
 
@@ -84,7 +125,7 @@
                     <div class="md-header__topic" data-md-component="header-topic">
                         <span class="md-ellipsis">
 
-                            Ana Sayfa
+                            .NET CLI ile Bağımlılık Yönetimi
 
                         </span>
                     </div>
@@ -226,8 +267,8 @@
 
                             <nav class="md-nav md-nav--primary" aria-label="Navigasyon" data-md-level="0">
                                 <label class="md-nav__title" for="__drawer">
-                                    <a href="." title="Dotnet Bilgileri" class="md-nav__button md-logo"
-                                        aria-label="Dotnet Bilgileri" data-md-component="logo">
+                                    <a href="../.." title=".Net Bilgileri" class="md-nav__button md-logo"
+                                        aria-label=".Net Bilgileri" data-md-component="logo">
 
 
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -236,7 +277,7 @@
                                         </svg>
 
                                     </a>
-                                    Dotnet Bilgileri
+                                    .Net Bilgileri
                                 </label>
 
                                 <div class="md-nav__source">
@@ -260,21 +301,8 @@
 
 
 
-
-
-
-
-
-
-                                    <li class="md-nav__item md-nav__item--active">
-
-                                        <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-
-
-
-
-
-                                        <label class="md-nav__link md-nav__link--active" for="__toc">
+                                    <li class="md-nav__item">
+                                        <a href="../.." class="md-nav__link">
 
 
                                             <span class="md-ellipsis">
@@ -282,56 +310,9 @@
                                             </span>
 
 
-                                            <span class="md-nav__icon md-icon"></span>
-                                        </label>
-
-                                        <a href="." class="md-nav__link md-nav__link--active">
-                                            <span class="md-ellipsis">
-                                                Ana Sayfa
-                                            </span>
                                         </a>
-
-
-                                        <nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
-
-
-                                            <label class="md-nav__title" for="__toc">
-                                                <span class="md-nav__icon md-icon"></span>
-                                                İçindekiler
-                                            </label>
-                                            <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-
-                                                <li class="md-nav__item">
-                                                    <a href="#icerik-baslklar" class="md-nav__link">
-                                                        <span class="md-ellipsis">
-                                                            İçerik Başlıkları
-                                                        </span>
-                                                    </a>
-
-                                                </li>
-
-                                                <li class="md-nav__item">
-                                                    <a href="#destek-olun" class="md-nav__link">
-                                                        <span class="md-ellipsis">
-                                                            Destek Olun
-                                                        </span>
-                                                    </a>
-
-                                                </li>
-
-                                                <li class="md-nav__item">
-                                                    <a href="#iletisim" class="md-nav__link">
-                                                        <span class="md-ellipsis">
-                                                            İletişim
-                                                        </span>
-                                                    </a>
-
-                                                </li>
-
-                                            </ul>
-
-                                        </nav>
                                     </li>
+
 
 
                                     <li class="md-nav__item md-nav__item--nested">
@@ -450,7 +431,7 @@
 
 
                                                 <li class="md-nav__item">
-                                                    <a href="dotnet-cli/dotnet-cli-ile-unit-test-calistirm/"
+                                                    <a href="dotnet-cli/dotnet-cli-ile-unit-test-calistirma/"
                                                         class="md-nav__link">
                                                         <span class="md-ellipsis">
                                                             .NET CLI ile Unit Test Çalıştırma
@@ -594,6 +575,7 @@
                                                         </span>
                                                     </a>
                                                 </li>
+
 
                                             </ul>
                                         </nav>
@@ -967,7 +949,7 @@
 
 
 
-                                    <li class="md-nav__item md-nav__item--nested">
+                                    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
 
 
 
@@ -994,8 +976,8 @@
                                             <ul class="md-nav__list" data-md-scrollfix>
 
 
-                                                <li class="md-nav__item">
-                                                    <a href="logging/serilog/" class="md-nav__link">
+                                                <li class="md-nav__link md-nav__link--active">
+                                                    <a href="./" class="md-nav__link">
 
                                                         <span class="md-ellipsis">
                                                             Serilog
@@ -15292,6 +15274,11 @@
 
                             <nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
 
+
+
+
+
+
                                 <label class="md-nav__title" for="__toc">
                                     <span class="md-nav__icon md-icon"></span>
                                     İçindekiler
@@ -15299,29 +15286,76 @@
                                 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
 
                                     <li class="md-nav__item">
-                                        <a href="#icerik-baslklar" class="md-nav__link">
+                                        <a href="#1-serilog-advantages" class="md-nav__link">
                                             <span class="md-ellipsis">
-                                                İçerik Başlıkları
+                                                1. Serilog Avantajları
                                             </span>
                                         </a>
 
                                     </li>
 
                                     <li class="md-nav__item">
-                                        <a href="#destek-olun" class="md-nav__link">
+                                        <a href="#2-serilog-setup" class="md-nav__link">
                                             <span class="md-ellipsis">
-                                                Destek Olun
+                                                2. Serilog Kurulumu
                                             </span>
                                         </a>
+
                                     </li>
 
                                     <li class="md-nav__item">
-                                        <a href="#iletisim" class="md-nav__link">
+                                        <a href="#3-serilog-example" class="md-nav__link">
                                             <span class="md-ellipsis">
-                                                İletişim
+                                                3. Serilog ile Basit Örnek
                                             </span>
                                         </a>
+
                                     </li>
+                                    <li class="md-nav__item">
+                                        <a href="#4-serilog-advanced-usage" class="md-nav__link">
+                                            <span class="md-ellipsis">
+
+                                                4. İleri Seviye Serilog Kullanımı
+
+                                            </span>
+                                        </a>
+
+                                    </li>
+                                    <li class="md-nav__item">
+                                        <a href="#5-serilog-best-practices" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                5. Serilog Kullanımı İçin En İyi Uygulamalar
+                                            </span>
+                                        </a>
+
+                                    </li>
+                                    <li class="md-nav__item">
+                                        <a href="#6-serilog-performance-tips" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                6. Performans İpuçları
+                                            </span>
+                                        </a>
+
+                                    </li>
+                                    <li class="md-nav__item">
+                                        <a href="#7-serilog-debugging-errors" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                7. Hata Ayıklama ve Loglama
+                                            </span>
+                                        </a>
+
+                                    </li>
+                                    <li class="md-nav__item">
+                                        <a href="#8-serilog-real-world-examples" class="md-nav__link">
+                                            <span class="md-ellipsis">
+                                                8. Gerçek Hayatta Serilog Kullanımı
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+
+
                                 </ul>
 
                             </nav>
@@ -15333,52 +15367,196 @@
 
                 <div class="md-content" data-md-component="content">
                     <article class="md-content__inner md-typeset">
+                        <h1 id="serilog-overview">Serilog Hakkında<a class="headerlink" href="#serilog-overview"
+                                title="Permanent link">&para;</a></h1>
+                        <p>Serilog, .NET projelerinde loglama için kullanılan güçlü ve popüler bir kütüphanedir.
+                            Özellikle JSON formatı, yapılandırılabilirlik ve geniş çıkış hedefleriyle modern loglama
+                            ihtiyaçlarını karşılar.</p>
+                        <hr />
 
-                        <h1 id="dotnet-bilgi-platformuna-hos-geldiniz">.NET Bilgi Platformuna Hoş Geldiniz<a
-                                class="headerlink" href="#dotnet-bilgi-platformuna-hos-geldiniz"
-                                title="Permanent link">&para;</a>
-                        </h1>
-                        <p>🎉 <strong>Hoş Geldiniz!</strong></p>
-                        <p>.NET geliştiricileri için hazırlanan kapsamlı bilgi paylaşım platformuna hoş geldiniz. Bu
-                            blog,
-                            .NET
-                            ekosisteminde öğreniminizi ve verimliliğinizi artırmaya yönelik rehberler, ipuçları ve
-                            örnekler
-                            sunmaktadır.</p>
-                        <p>Platformumuz düzenli olarak güncellenmektedir. Yeni içerikler ve özellikler eklenmeye devam
-                            edecektir, bu
-                            yüzden bizi takipte kalın!</p>
-
-                        <h2 id="icerik-basliklari">İçerik Başlıkları<a class="headerlink" href="#icerik-basliklari"
-                                title="Permanent link">&para;</a></h2>
-                        <p>Blogumuzda aşağıdaki başlıklar ele alınmaktadır:</p>
+                        <h2 id="1-serilog-advantages">1. Serilog Avantajları<a class="headerlink"
+                                href="#1-serilog-advantages" title="Permanent link">&para;</a></h2>
                         <ul>
-                            <li><strong>.NET</strong>.Net ile ilgili tüm bilgiler
+                            <li><strong>Yapılandırılabilirlik</strong>: JSON ve XML gibi yapılandırma dosyaları ile
+                                kolay entegrasyon sağlar.</li>
+                            <li><strong>Çıkış Hedefleri (Sinks)</strong>: Logları dosya, konsol, veya veri tabanlarına
+                                yönlendirebilirsiniz.</li>
+                            <li><strong>Zengin Veri</strong>: Yapısal loglama ile loglar daha okunabilir ve analiz
+                                edilebilir hale gelir.</li>
+                        </ul>
+                        <hr />
+
+                        <h2 id="2-serilog-setup">2. Serilog Kurulumu<a class="headerlink" href="#2-serilog-setup"
+                                title="Permanent link">&para;</a></h2>
+                        <p>Serilog kütüphanesini projeye dahil etmek için <a href="https://www.nuget.org/"
+                                target="_blank">NuGet</a> paket yöneticisini kullanabilirsiniz. Aşağıdaki komutları
+                            çalıştırarak gerekli paketleri yükleyin:</p>
+                        <div class="highlight">
+                            <pre><code>Install-Package Serilog.AspNetCore
+Install-Package Serilog.Sinks.Console
+Install-Package Serilog.Sinks.File</code></pre>
+                        </div>
+                        <hr />
+
+                        <h2 id="3-serilog-example">3. Serilog ile Basit Örnek<a class="headerlink"
+                                href="#3-serilog-example" title="Permanent link">&para;</a></h2>
+                        <p>Aşağıda bir ASP.NET Core projesinde Serilog ile loglama örneği verilmiştir:</p>
+                        <div class="highlight">
+                            <pre><code>using Microsoft.AspNetCore.Builder;
+                                using Microsoft.Extensions.DependencyInjection;
+                                using Microsoft.Extensions.Hosting;
+                                using Serilog;
+
+                                var builder = WebApplication.CreateBuilder(args);
+
+                                // Serilog yapılandırması
+                                Log.Logger = new LoggerConfiguration()
+                                    .MinimumLevel.Debug()
+                                    .WriteTo.Console()
+                                    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+                                    .CreateLogger();
+
+                                // Loglama için kullan
+                                builder.Host.UseSerilog();
+
+                                var app = builder.Build();
+
+                                app.MapGet("/", () =>
+                                {
+                                    Log.Information("Ana sayfa çağrıldı.");
+                                    return "Merhaba Serilog!";
+                                });
+
+                                app.MapGet("/hata", () =>
+                                {
+                                    Log.Error("Bir hata meydana geldi!");
+                                    return Results.Problem("Bir hata oluştu.");
+                                });
+
+                                app.Run();</code></pre>
+                        </div>
+                        <p>Daha fazla bilgi için <a href="https://serilog.net/" target="_blank">Serilog Resmi
+                                Sitesi</a>'ni ziyaret edebilirsiniz.</p>
+                        <hr />
+
+
+                        <h2 id="4-serilog-advanced-usage">4. İleri Seviye Serilog Kullanımı<a class="headerlink"
+                                href="#4-serilog-advanced-usage" title="Permanent link">&para;</a></h2>
+                        <p>Serilog, basit loglama işlemlerinin ötesine geçerek gelişmiş özellikler sunar. Aşağıda bu
+                            özelliklerden bazıları verilmiştir:</p>
+                        <ul>
+                            <li><strong>Yapısal Loglama:</strong> Logların okunabilirliği ve analizi için
+                                yapılandırılmış veri desteği sağlar. Örnek:
+                                <div class="highlight">
+                                    <pre><code>Log.Information("Kullanıcı giriş yaptı: {@Kullanici}", new { KullaniciAdi = "Ahmet", Yas = 30 });</code></pre>
+                                </div>
+                                Bu log çıktısı JSON formatında saklanabilir.
                             </li>
+                            <li><strong>Entegrasyonlar:</strong> Serilog, Elasticsearch, Seq, Grafana gibi birçok
+                                sistemle entegre çalışabilir. Örnek:
+                                <div class="highlight">
+                                    <pre><code>Install-Package Serilog.Sinks.Seq
 
-                            <p>Her başlık altında kısa açıklamalar, kod örnekleri ve pratik öneriler bulabilirsiniz.</p>
-                            <hr />
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Seq("http://localhost:5341")
+    .CreateLogger();</code></pre>
+                                </div>
+                                Daha fazla bilgi için <a href="https://datalust.co/seq" target="_blank">Seq Resmi
+                                    Sitesi</a>'ni inceleyebilirsiniz.
+                            </li>
+                            <li><strong>Kullanıcı Tanımlı Log Seviyeleri:</strong> Varsayılan log seviyeleri dışında
+                                özel seviyeler oluşturabilirsiniz.</li>
+                        </ul>
+                        <hr />
 
-                            <h2 id="destek-olun">Destek Olun<a class="headerlink" href="#destek-olun"
-                                    title="Permanent link">&para;</a>
-                            </h2>
-                            <div class="support-section">
-                                <p>Bu platformu beğendiyseniz ve faydalı buluyorsanız, GitHub’da ⭐ vererek katkıda
-                                    bulunabilirsiniz!</p>
-                            </div>
-                            <hr />
+                        <h2 id="5-serilog-best-practices">5. Serilog Kullanımı İçin En İyi Uygulamalar<a
+                                class="headerlink" href="#5-serilog-best-practices" title="Permanent link">&para;</a>
+                        </h2>
+                        <p>Serilog kullanırken aşağıdaki en iyi uygulamalar loglama sürecinizi optimize edebilir:</p>
+                        <ul>
+                            <li><strong>Performans:</strong> Loglama için asenkron <code>.WriteTo.Async()</code>
+                                metodunu kullanarak performans kaybını önleyin.</li>
+                            <li><strong>Loglama Kapsamı:</strong> Önemli sistem parçalarını ve hataları loglayarak
+                                uygulama üzerinde detaylı bir analiz yapabilirsiniz. Örnek:
+                                <div class="highlight">
+                                    <pre><code>using (LogContext.PushProperty("KullaniciId", kullaniciId))
+{
+    Log.Information("Sipariş oluşturuldu: {SiparisNo}", siparisNo);
+}</code></pre>
+                                </div>
+                            </li>
+                            <li><strong>Doğru Log Seviyesini Seçin:</strong> <code>Debug</code>,
+                                <code>Information</code>, <code>Warning</code>, <code>Error</code>, <code>Fatal</code>
+                                seviyelerini doğru kullanarak logları anlamlı hale getirin.
+                            </li>
+                        </ul>
+                        <hr />
 
-                            <h2 id="iletisim">İletişim<a class="headerlink" href="#iletisim"
-                                    title="Permanent link">&para;</a></h2>
-                            <p>Sorularınız veya önerileriniz varsa, aşağıdaki bağlantılardan bana ulaşabilirsiniz:</p>
-                            <p>
-                                <a href="https://github.com/berkancelik/"><img alt="Github Badge"
-                                        src="https://img.shields.io/badge/berkancelik-100000?style=flat&amp;logo=github&amp;logoColor=white" /></a><br />
-                                <a href="https://medium.com/@berkancelik"><img alt="Medium Badge"
-                                        src="https://img.shields.io/badge/Medium-12100E?style=flat&amp;logo=medium&amp;logoColor=white" /></a>
-                            </p>
-                            <hr />
+                        <h2 id="6-serilog-performance-tips">6. Performans İpuçları<a class="headerlink"
+                                href="#6-serilog-performance-tips" title="Permanent link">&para;</a></h2>
+                        <p>Serilog, ağır loglama işlemlerinde performans sorunlarını minimize etmek için aşağıdaki
+                            stratejiler önerir:</p>
+                        <ul>
+                            <li><strong>Asenkron Loglama:</strong> Performansı artırmak için:
+                                <div class="highlight">
+                                    <pre><code>Log.Logger = new LoggerConfiguration()
+    .WriteTo.Async(a => a.Console())
+    .CreateLogger();</code></pre>
+                                </div>
+                            </li>
+                            <li><strong>Filtreleme:</strong> Gereksiz logları filtrelemek için
+                                <code>.Filter.ByExcluding()</code> metodunu kullanabilirsiniz. Örnek:
+                                <div class="highlight">
+                                    <pre><code>Log.Logger = new LoggerConfiguration()
+    .Filter.ByExcluding(logEvent => logEvent.Level == LogEventLevel.Debug)
+    .CreateLogger();</code></pre>
+                                </div>
+                            </li>
+                            <li><strong>Dosya Rotasyonu:</strong> Log dosyalarının boyutunu sınırlayarak performansı
+                                kontrol altında tutun. Örnek:
+                                <div class="highlight">
+                                    <pre><code>Log.Logger = new LoggerConfiguration()
+    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day, fileSizeLimitBytes: 10485760)
+    .CreateLogger();</code></pre>
+                                </div>
+                            </li>
+                        </ul>
+                        <hr />
 
+                        <h2 id="7-serilog-debugging-errors">7. Hata Ayıklama ve Loglama<a class="headerlink"
+                                href="#7-serilog-debugging-errors" title="Permanent link">&para;</a></h2>
+                        <p>Serilog'u hata ayıklama ve sorun giderme için etkili bir şekilde kullanabilirsiniz:</p>
+                        <ul>
+                            <li><strong>Exception Detayları:</strong> Hataları daha ayrıntılı görmek için
+                                <code>Log.Error(ex, "Hata oluştu");</code> kullanın.
+                            </li>
+                            <li><strong>Minimum Seviye Belirleme:</strong> Hangi log seviyesinin işleneceğini belirlemek
+                                için <code>MinimumLevel</code> kullanabilirsiniz.</li>
+                            <li><strong>Hata Takibi:</strong> Hataları veri tabanında saklamak için <a
+                                    href="https://github.com/serilog/serilog-sinks-mssqlserver" target="_blank">MSSQL
+                                    Server Sink</a>'i kullanabilirsiniz.</li>
+                        </ul>
+                        <hr />
+
+                        <h2 id="8-serilog-real-world-examples">8. Gerçek Hayatta Serilog Kullanımı<a class="headerlink"
+                                href="#8-serilog-real-world-examples" title="Permanent link">&para;</a></h2>
+                        <p>Serilog'un gerçek dünyadaki kullanımına dair örnekler:</p>
+                        <ul>
+                            <li><a href="https://devblogs.microsoft.com/aspnet/using-serilog-with-asp-net-core/"
+                                    target="_blank">ASP.NET Core ile Serilog Entegrasyonu</a></li>
+                            <li><a href="https://medium.com/@serilogtr" target="_blank">Türkçe Medium Makaleleri</a>
+                            </li>
+                            <li><a href="https://datalust.co/blog" target="_blank">Datalust Blog</a> (Resmi Serilog
+                                makaleleri)</li>
+
+                            <li><a href="https://learn.microsoft.com/tr-tr/aspnet/core/fundamentals/logging/?view=aspnetcore-9.0"
+                                    target="_blank">Microsoft Docs: ASP.NET Core Loglama</a></li>
+                            <li><a href="https://medium.com/@serilogtr/serilog-kullan%C4%B1m%C4%B1-6123d09a4f43"
+                                    target="_blank">Medium: Serilog Kullanımı</a></li>
+                            <li><a href="https://serilog.net/" target="_blank">Serilog Resmi Sitesi</a></li>
+
+
+                        </ul>
                     </article>
                 </div>
 
@@ -15397,9 +15575,16 @@
                             2025 <a href="https://github.com/berkancelik">Berkan Çelik</a>.
                         </div>
 
+
                     </div>
 
                     <div class="md-social">
+
+
+
+
+
+
 
 
                         <a href="https://www.linkedin.com/in/berkancelik" target="_blank" rel="noopener"
@@ -15411,6 +15596,13 @@
                             </svg>
                         </a>
 
+
+
+
+
+
+
+
                         <a href="https://github.com/berkancelik" target="_blank" rel="noopener" title="github.com"
                             class="md-social__link">
                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -15419,6 +15611,12 @@
                                     d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
                             </svg>
                         </a>
+
+
+
+
+
+
 
 
 
@@ -15435,10 +15633,10 @@
 
 
     <script id="__config"
-        type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Kopyaland\u0131", "clipboard.copy": "Kopyala", "search.result.more.one": "Bu sayfada 1 tane daha", "search.result.more.other": "Bu sayfada # tane daha", "search.result.none": "E\u015fle\u015fen dok\u00fcman bulunamad\u0131", "search.result.one": "1 dok\u00fcman bulundu", "search.result.other": "# dok\u00fcman bulundu", "search.result.placeholder": "Aramaya ba\u015flamak i\u00e7in yaz\u0131n", "search.result.term.missing": "Eksik", "select.version": "Versiyon se\u00e7"}}</script>
+        type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Kopyaland\u0131", "clipboard.copy": "Kopyala", "search.result.more.one": "Bu sayfada 1 tane daha", "search.result.more.other": "Bu sayfada # tane daha", "search.result.none": "E\u015fle\u015fen dok\u00fcman bulunamad\u0131", "search.result.one": "1 dok\u00fcman bulundu", "search.result.other": "# dok\u00fcman bulundu", "search.result.placeholder": "Aramaya ba\u015flamak i\u00e7in yaz\u0131n", "search.result.term.missing": "Eksik", "select.version": "Versiyon se\u00e7"}}</script>
 
 
-    <script src="assets/javascripts/bundle.1e8ae164.min.js"></script>
+    <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
 
 
 </body>
