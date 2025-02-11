@@ -14,7 +14,7 @@ const menuData = [
         title: "Entity Framework",
         subMenu: [
             { title: "Entity Framework Nedir?", link: "entity-framework/entity-framework-nedir-orm-teknolojisine-genel-bakis/" },
-            { title: "N+1 Problemi Nedir?", link: "entity-framework/n-arti-bir-problemi-nedir/" },
+            { title: "N+1 Problemi Nedir?", link: "../../entity-framework/n-arti-bir-problemi-nedir/" },
             { title: "Transaction Yönetimi", link: "entity-framework/entity-framework-de-transaction-yonetimi-ve-en-iyi-uygulamalar/" }
         ]
     },
@@ -23,6 +23,7 @@ const menuData = [
         subMenu: [
             { title: "Serilog", link: "./" },
             { title: "NLog", link: "logging/nlog/" },
+            { title: "Splunk", link: "../../logging/splunk/" },
             { title: "New Relic", link: "logging/new-relic/" }
         ]
     }
@@ -31,7 +32,6 @@ const menuData = [
 // Mevcut URL'yi al
 const currentPath = window.location.pathname;
 
-// Menü oluşturucu fonksiyon
 // Menü oluşturucu fonksiyon
 function generateMenu(menuItems) {
     let menuHTML = '<nav class="md-nav"><ul class="md-nav__list">';
