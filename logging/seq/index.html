@@ -296,9 +296,22 @@
                                     </a>
                                 </div>
 
-                                <div id="dynamicMenu"></div>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                // Mevcut sayfanın yolunu al
+                                const currentPath = window.location.pathname.split("/").pop();
 
-                                <script src="../../menu.js"></script>
+                                document.querySelectorAll(".md-nav__list a").forEach(link => {
+                                if (link.getAttribute("href") === currentPath) {
+                                link.classList.add("md-nav__link--active"); // Aktif linki belirle
+
+                                let parentLi = link.closest(".md-nav__item--nested");
+                                if (parentLi) {
+                                parentLi.classList.add("md-nav__item--active"); // Üst öğeyi de aktif yap
+                                }
+                                }
+                                });
+                                });
+
                             </nav>
                         </div>
                     </div>
