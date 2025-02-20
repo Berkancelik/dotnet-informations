@@ -36,7 +36,7 @@ const menuData = [
             { title: ".NET CLI ile Proje Şablonları Kullanımı", link: "../../dotnet-cli/dotnet-cli-ile-proje-sablonlari-kullanimi/" },
             { title: ".NET CLI ile Bağımlılık Yönetimi", link: "../../dotnet-cli/dotnet-cli-ile-bagimlilik-yonetimi/" },
             { title: ".NET CLI ile Proje Derleme ve Çalıştırma", link: "../../dotnet-cli/dotnet-cli-ile-proje-derleme-ve-calistirma/" },
-            { title: ".NET CLI ile Unit Test Çalıştırma", link: "../../dotnet-cli/dotnet-cli-ile-unit-test-calistirm/" },
+            { title: ".NET CLI ile Unit Test Çalıştırma", link: "../../dotnet-cli/dotnet-cli-ile-unit-test-calistirma/" },
             { title: ".NET CLI Komutları: Temel Rehber", link: "../../dotnet-cli/dotnet-cli-komutlari-temel-rehber" },
             { title: ".NET CLI ile Global Araçlar (Global Tools) Kullanımı", link: "../../dotnet-cli/dotnet-cli-ile-global-araclar-global-tools-kullanimi/" },
             { title: ".NET CLI ile Projeyi Yayınlama (Publishing)", link: "../../dotnet-cli/net-ile-projeyi-yayinlama/" },
