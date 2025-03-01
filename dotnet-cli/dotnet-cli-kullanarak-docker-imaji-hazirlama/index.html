@@ -10,14 +10,13 @@
     <meta name="description" content="Bu blog .Net ile illgii bilgilerin paylaşıldığı blogdur.">
 
 
-    <link rel="canonical"
-        href="https://berkancelik.github.io/dotnet-informations/dotnet-cli/dotnet-cli-komutlari-ile-migration-yonetimi/">
+    <link rel="canonical" href="https://berkancelik.github.io/dotnet-cli-kullanarak-docker-imaji-hazirlama/">
 
 
-    <link rel="prev" href="../dotnet-cli/dotnet-cli-ile-restful-api-olusturma/">
+    <link rel="prev" href="../dotnet-cli/dotnet-cli-komutlari-ile-migration-yonetimi/">
 
 
-    <link rel="next" href="../dotnet-cli/dotnet-cli-kullanarak-docker-imaji-hazirlama/">
+    <link rel="next" href="../dotnet-cli-ile-performans-analizi/">
 
 
     <link rel="icon" href="../../assets/images/favicon.png">
@@ -25,7 +24,7 @@
 
 
 
-    <title>.NET CLI ile Migration Yönetimi - .Net Bilgileri</title>
+    <title>.NET CLI Kullanarak Docker İmajı Hazırlama</title>
 
 
 
@@ -83,7 +82,7 @@
     <div data-md-component="skip">
 
 
-        <a href="#dotnet-cli-komutlari-ile-migration-yonetimi" class="md-skip">
+        <a href="#dotnet-cli-docker-image" class="md-skip">
             Ana içeriğe geç
         </a>
 
@@ -125,7 +124,8 @@
                     <div class="md-header__topic" data-md-component="header-topic">
                         <span class="md-ellipsis">
 
-                            .NET CLI ile Migration Yönetimi
+                            .NET CLI Kullanarak Docker İmajı Hazırlaması
+
 
                         </span>
                     </div>
@@ -317,38 +317,35 @@
                                     İçindekiler
                                 </label>
                                 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+
                                     <li class="md-nav__item">
-                                        <a href="#dotnet-cli-migration-management" class="md-nav__link">
+                                        <a href="#dotnet-cli-docker-image" class="md-nav__link">
                                             <span class="md-ellipsis">
-                                                .NET CLI ile Migration Yönetimi
+                                                .NET CLI ile Docker İmajı Oluşturma
                                             </span>
                                         </a>
                                     </li>
+
                                     <li class="md-nav__item">
-                                        <a href="#1-dotnet-cli-add-migration" class="md-nav__link">
+                                        <a href="#1-dockerfile-hazirlama" class="md-nav__link">
                                             <span class="md-ellipsis">
-                                                1. Migration Oluşturmak
+                                                1. Dockerfile Hazırlama
                                             </span>
                                         </a>
                                     </li>
+
                                     <li class="md-nav__item">
-                                        <a href="#2-dotnet-cli-update-database" class="md-nav__link">
+                                        <a href="#2-docker-imaj-olusturma" class="md-nav__link">
                                             <span class="md-ellipsis">
-                                                2. Veritabanını Güncellemek
+                                                2. Docker İmajı Oluşturma
                                             </span>
                                         </a>
                                     </li>
+
                                     <li class="md-nav__item">
-                                        <a href="#3-dotnet-cli-remove-migration" class="md-nav__link">
+                                        <a href="#3-docker-konteyner-calistirma" class="md-nav__link">
                                             <span class="md-ellipsis">
-                                                3. Son Migration'ı Kaldırmak
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#4-dotnet-cli-list-migrations" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                4. Mevcut Migration'ları Listelemek
+                                                3. Docker Konteyner Çalıştırma
                                             </span>
                                         </a>
                                     </li>
@@ -360,50 +357,45 @@
 
                 <div class="md-content" data-md-component="content">
                     <article class="md-content__inner md-typeset">
-                        <h1 id="dotnet-cli-migration-management">.NET CLI ile Migration Yönetimi<a class="headerlink"
-                                href="#dotnet-cli-migration-management" title="Permanent link">&para;</a></h1>
-                        <p>.NET CLI, Entity Framework Core ile veritabanı şemalarını yönetmek için kullanılan bir
-                            araçtır. Aşağıda .NET CLI komutları ile migration işlemlerinin nasıl yapıldığı
-                            anlatılmaktadır.</p>
+                        <h1 id="dotnet-cli-docker-image">.NET CLI ile Docker İmajı Oluşturma<a class="headerlink"
+                                href="#dotnet-cli-docker-image" title="Permanent link">&para;</a></h1>
+                        <p>.NET CLI kullanarak bir uygulamanın Docker imajını oluşturmak oldukça basittir. Bunun için
+                            Dockerfile hazırlayarak ve bazı temel komutları kullanarak imaj oluşturabiliriz.</p>
                         <hr />
 
-                        <h2 id="1-dotnet-cli-add-migration">1. Migration Oluşturmak<a class="headerlink"
-                                href="#1-dotnet-cli-add-migration" title="Permanent link">&para;</a></h2>
-                        <p>Yeni bir migration oluşturmak için aşağıdaki komut kullanılır:</p>
+                        <h2 id="1-dockerfile-hazirlama">1. Dockerfile Hazırlama<a class="headerlink"
+                                href="#1-dockerfile-hazirlama" title="Permanent link">&para;</a></h2>
+                        <p>Öncelikle, projemizin kök dizinine bir <code>Dockerfile</code> oluşturuyoruz ve içerisine şu
+                            kodları ekliyoruz:</p>
                         <div class="highlight">
-                            <pre><code>dotnet ef migrations add InitialCreate</code></pre>
+                            <pre><code>FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+COPY bin/Release/net8.0/publish/ .
+ENTRYPOINT ["dotnet", "MyApp.dll"]</code></pre>
                         </div>
                         <hr />
 
-                        <h2 id="2-dotnet-cli-update-database">2. Veritabanını Güncellemek<a class="headerlink"
-                                href="#2-dotnet-cli-update-database" title="Permanent link">&para;</a></h2>
-                        <p>Oluşturulan migration'ları veritabanına uygulamak için aşağıdaki komut kullanılır:</p>
+                        <h2 id="2-docker-imaj-olusturma">2. Docker İmajı Oluşturma<a class="headerlink"
+                                href="#2-docker-imaj-olusturma" title="Permanent link">&para;</a></h2>
+                        <p>Docker imajını oluşturmak için aşağıdaki komutu çalıştırıyoruz:</p>
                         <div class="highlight">
-                            <pre><code>dotnet ef database update</code></pre>
+                            <pre><code>docker build -t myapp .</code></pre>
                         </div>
                         <hr />
 
-                        <h2 id="3-dotnet-cli-remove-migration">3. Son Migration'ı Kaldırmak<a class="headerlink"
-                                href="#3-dotnet-cli-remove-migration" title="Permanent link">&para;</a></h2>
-                        <p>Son eklenen migration'ı geri almak için şu komut kullanılır:</p>
+                        <h2 id="3-docker-konteyner-calistirma">3. Docker Konteyner Çalıştırma<a class="headerlink"
+                                href="#3-docker-konteyner-calistirma" title="Permanent link">&para;</a></h2>
+                        <p>Oluşturduğumuz imajdan bir konteyner çalıştırmak için:</p>
                         <div class="highlight">
-                            <pre><code>dotnet ef migrations remove</code></pre>
+                            <pre><code>docker run -d -p 8080:80 --name myapp_container myapp</code></pre>
                         </div>
                         <hr />
 
-                        <h2 id="4-dotnet-cli-list-migrations">4. Mevcut Migration'ları Listelemek<a class="headerlink"
-                                href="#4-dotnet-cli-list-migrations" title="Permanent link">&para;</a></h2>
-                        <p>Mevcut tüm migration'ları listelemek için aşağıdaki komut kullanılır:</p>
-                        <div class="highlight">
-                            <pre><code>dotnet ef migrations list</code></pre>
-                        </div>
-                        <hr />
-
-                        <p>Daha fazla bilgi için <a href="https://learn.microsoft.com/en-us/ef/core/cli/dotnet"
-                                target="_blank">Entity Framework CLI Belgeleri</a>'ni ziyaret edebilirsiniz.</p>
+                        <p>Daha fazla bilgi için <a
+                                href="https://learn.microsoft.com/en-us/dotnet/core/docker/build-container"
+                                target="_blank">.NET CLI ve Docker Belgeleri</a>'ni ziyaret edebilirsiniz.</p>
                     </article>
                 </div>
-
 
 
                 <script>var target = document.getElementById(location.hash.slice(1)); target && target.name && (target.checked = target.name.startsWith("__tabbed_"))</script>
