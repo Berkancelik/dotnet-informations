@@ -10,13 +10,13 @@
     <meta name="description" content="Bu blog .Net ile illgii bilgilerin paylaşıldığı blogdur.">
 
 
-    <link rel="canonical" href="https://berkancelik.github.io/dotnet-informations/logging/serilog/">
+    <link rel="canonical" href="https://berkancelik.github.io/dotnet-cli/dotnet-cli-komutlari-temel-rehber/">
 
 
-    <link rel="prev" href="../../dotnet/dotnet-9-features/">
+    <link rel="prev" href="../dotnet-cli-ile-unit-test-calistirma/">
 
 
-    <link rel="next" href="../nlog/">
+    <link rel="next" href="../dotnet-cli-ile-global-araclar-global-tools-kullanimi/">
 
 
     <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
 
 
 
-    <title>Serilog - .Net Bilgileri</title>
+    <title> .NET CLI Komutları - Temel Rehber - .Net Bilgileri</title>
 
 
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
 
 
-        <a href="#serilog" class="md-skip">
+        <a href="#dotnet-cli-komutlari-temel-rehber" class="md-skip">
             Ana içeriğe geç
         </a>
 
@@ -124,7 +124,7 @@
                     <div class="md-header__topic" data-md-component="header-topic">
                         <span class="md-ellipsis">
 
-                            Serilog
+                            .NET CLI Komutları - Temel Rehber
 
                         </span>
                     </div>
@@ -308,297 +308,149 @@
 
 
                 <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-                    <div class="md-sidebar__scrollwrap">
-                        <div class="md-sidebar__inner">
+    <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+            <nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+                <label class="md-nav__title" for="__toc">
+                    <span class="md-nav__icon md-icon"></span>
+                    İçindekiler
+                </label>
+                <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix">
+                    <li class="md-nav__item">
+                        <a href="#dotnet-cli-komutlari-temel-rehber" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                .NET CLI Komutları - Temel Rehber
+                            </span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#1-dotnet-sdk-kontrolu" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                1. .NET SDK Sürümünü Kontrol Etme
+                            </span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#2-yeni-proje-olusturma" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                2. Yeni Proje Oluşturma
+                            </span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#3-projeyi-derleme" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                3. Projeyi Derleme
+                            </span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#4-projeyi-calistirma" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                4. Projeyi Çalıştırma
+                            </span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#5-dependecy-managment" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                5. Bağımlılık Yönetimi
+                            </span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#6-publish-ve-yayinlama" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                6. Projeyi Yayınlama (Publish)
+                            </span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#7-unit-test-calistirma" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                7. Unit Test Çalıştırma
+                            </span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#8-kaynaklar" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                8. Kaynaklar
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
 
+<div class="md-content" data-md-component="content">
+    <article class="md-content__inner md-typeset">
+        <h1 id="dotnet-cli-komutlari-temel-rehber">.NET CLI Komutları - Temel Rehber<a class="headerlink" href="#dotnet-cli-komutlari-temel-rehber" title="Permanent link">&para;</a></h1>
+        <p>.NET CLI (Command-Line Interface), .NET projelerini yönetmek için kullanılan bir komut satırı aracıdır. 
+           Bu rehber, temel .NET CLI komutlarını içermektedir.</p>
+        <hr />
 
-                            <nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+        <h2 id="1-dotnet-sdk-kontrolu">1. .NET SDK Sürümünü Kontrol Etme<a class="headerlink" href="#1-dotnet-sdk-kontrolu" title="Permanent link">&para;</a></h2>
+        <p>Yüklü .NET SDK sürümünü görmek için:</p>
+        <div class="highlight">
+            <pre><code>dotnet --version</code></pre>
+        </div>
+        <hr />
 
+        <h2 id="2-yeni-proje-olusturma">2. Yeni Proje Oluşturma<a class="headerlink" href="#2-yeni-proje-olusturma" title="Permanent link">&para;</a></h2>
+        <p>Yeni bir .NET projesi oluşturmak için:</p>
+        <div class="highlight">
+            <pre><code>dotnet new console -n MyConsoleApp</code></pre>
+        </div>
+        <p>Bu komut, yeni bir konsol uygulaması oluşturur.</p>
+        <hr />
 
+        <h2 id="3-projeyi-derleme">3. Projeyi Derleme<a class="headerlink" href="#3-projeyi-derleme" title="Permanent link">&para;</a></h2>
+        <p>Projeyi derlemek için:</p>
+        <div class="highlight">
+            <pre><code>dotnet build</code></pre>
+        </div>
+        <p>Bu komut, kaynak kodları derleyerek yürütülebilir bir dosya oluşturur.</p>
+        <hr />
 
+        <h2 id="4-projeyi-calistirma">4. Projeyi Çalıştırma<a class="headerlink" href="#4-projeyi-calistirma" title="Permanent link">&para;</a></h2>
+        <p>Projeyi çalıştırmak için:</p>
+        <div class="highlight">
+            <pre><code>dotnet run</code></pre>
+        </div>
+        <hr />
 
+        <h2 id="5-dependecy-managment">5. Bağımlılık Yönetimi<a class="headerlink" href="#5-dependecy-managment" title="Permanent link">&para;</a></h2>
+        <p>Bağımlılık eklemek için:</p>
+        <div class="highlight">
+            <pre><code>dotnet add package Newtonsoft.Json</code></pre>
+        </div>
+        <hr />
 
+        <h2 id="6-publish-ve-yayinlama">6. Projeyi Yayınlama (Publish)<a class="headerlink" href="#6-publish-ve-yayinlama" title="Permanent link">&para;</a></h2>
+        <p>Projeyi yayınlamak için:</p>
+        <div class="highlight">
+            <pre><code>dotnet publish -c Release -o publish</code></pre>
+        </div>
+        <hr />
 
-                                <label class="md-nav__title" for="__toc">
-                                    <span class="md-nav__icon md-icon"></span>
-                                    İçindekiler
-                                </label>
-                                <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        <h2 id="7-unit-test-calistirma">7. Unit Test Çalıştırma<a class="headerlink" href="#7-unit-test-calistirma" title="Permanent link">&para;</a></h2>
+        <p>Unit test çalıştırmak için:</p>
+        <div class="highlight">
+            <pre><code>dotnet test</code></pre>
+        </div>
+        <hr />
 
-                                    <li class="md-nav__item">
-                                        <a href="#1-serilog-advantages" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                1. Serilog Avantajları
-                                            </span>
-                                        </a>
-
-                                    </li>
-
-                                    <li class="md-nav__item">
-                                        <a href="#2-serilog-setup" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                2. Serilog Kurulumu
-                                            </span>
-                                        </a>
-
-                                    </li>
-
-                                    <li class="md-nav__item">
-                                        <a href="#3-serilog-example" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                3. Serilog ile Basit Örnek
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#4-serilog-advanced-usage" class="md-nav__link">
-                                            <span class="md-ellipsis">
-
-                                                4. İleri Seviye Serilog Kullanımı
-
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#5-serilog-best-practices" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                5. Serilog Kullanımı İçin En İyi Uygulamalar
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#6-serilog-performance-tips" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                6. Performans İpuçları
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#7-serilog-debugging-errors" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                7. Hata Ayıklama ve Loglama
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#8-serilog-real-world-examples" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                8. Gerçek Hayatta Serilog Kullanımı
-                                            </span>
-                                        </a>
-
-                                    </li>
-
-
-
-                                </ul>
-
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="md-content" data-md-component="content">
-                    <article class="md-content__inner md-typeset">
-                        <h1 id="serilog-overview">Serilog Hakkında<a class="headerlink" href="#serilog-overview"
-                                title="Permanent link">&para;</a></h1>
-                        <p>Serilog, .NET projelerinde loglama için kullanılan güçlü ve popüler bir kütüphanedir.
-                            Özellikle JSON formatı, yapılandırılabilirlik ve geniş çıkış hedefleriyle modern loglama
-                            ihtiyaçlarını karşılar.</p>
-                        <hr />
-
-                        <h2 id="1-serilog-advantages">1. Serilog Avantajları<a class="headerlink"
-                                href="#1-serilog-advantages" title="Permanent link">&para;</a></h2>
-                        <ul>
-                            <li><strong>Yapılandırılabilirlik</strong>: JSON ve XML gibi yapılandırma dosyaları ile
-                                kolay entegrasyon sağlar.</li>
-                            <li><strong>Çıkış Hedefleri (Sinks)</strong>: Logları dosya, konsol, veya veri tabanlarına
-                                yönlendirebilirsiniz.</li>
-                            <li><strong>Zengin Veri</strong>: Yapısal loglama ile loglar daha okunabilir ve analiz
-                                edilebilir hale gelir.</li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="2-serilog-setup">2. Serilog Kurulumu<a class="headerlink" href="#2-serilog-setup"
-                                title="Permanent link">&para;</a></h2>
-                        <p>Serilog kütüphanesini projeye dahil etmek için <a href="https://www.nuget.org/"
-                                target="_blank">NuGet</a> paket yöneticisini kullanabilirsiniz. Aşağıdaki komutları
-                            çalıştırarak gerekli paketleri yükleyin:</p>
-                        <div class="highlight">
-                            <pre><code>Install-Package Serilog.AspNetCore
-Install-Package Serilog.Sinks.Console
-Install-Package Serilog.Sinks.File</code></pre>
-                        </div>
-                        <hr />
-
-                        <h2 id="3-serilog-example">3. Serilog ile Basit Örnek<a class="headerlink"
-                                href="#3-serilog-example" title="Permanent link">&para;</a></h2>
-                        <p>Aşağıda bir ASP.NET Core projesinde Serilog ile loglama örneği verilmiştir:</p>
-                        <div class="highlight">
-                            <pre><code>using Microsoft.AspNetCore.Builder;
-                                using Microsoft.Extensions.DependencyInjection;
-                                using Microsoft.Extensions.Hosting;
-                                using Serilog;
-
-                                var builder = WebApplication.CreateBuilder(args);
-
-                                // Serilog yapılandırması
-                                Log.Logger = new LoggerConfiguration()
-                                    .MinimumLevel.Debug()
-                                    .WriteTo.Console()
-                                    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
-                                    .CreateLogger();
-
-                                // Loglama için kullan
-                                builder.Host.UseSerilog();
-
-                                var app = builder.Build();
-
-                                app.MapGet("/", () =>
-                                {
-                                    Log.Information("Ana sayfa çağrıldı.");
-                                    return "Merhaba Serilog!";
-                                });
-
-                                app.MapGet("/hata", () =>
-                                {
-                                    Log.Error("Bir hata meydana geldi!");
-                                    return Results.Problem("Bir hata oluştu.");
-                                });
-
-                                app.Run();</code></pre>
-                        </div>
-                        <p>Daha fazla bilgi için <a href="https://serilog.net/" target="_blank">Serilog Resmi
-                                Sitesi</a>'ni ziyaret edebilirsiniz.</p>
-                        <hr />
-
-
-                        <h2 id="4-serilog-advanced-usage">4. İleri Seviye Serilog Kullanımı<a class="headerlink"
-                                href="#4-serilog-advanced-usage" title="Permanent link">&para;</a></h2>
-                        <p>Serilog, basit loglama işlemlerinin ötesine geçerek gelişmiş özellikler sunar. Aşağıda bu
-                            özelliklerden bazıları verilmiştir:</p>
-                        <ul>
-                            <li><strong>Yapısal Loglama:</strong> Logların okunabilirliği ve analizi için
-                                yapılandırılmış veri desteği sağlar. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Log.Information("Kullanıcı giriş yaptı: {@Kullanici}", new { KullaniciAdi = "Ahmet", Yas = 30 });</code></pre>
-                                </div>
-                                Bu log çıktısı JSON formatında saklanabilir.
-                            </li>
-                            <li><strong>Entegrasyonlar:</strong> Serilog, Elasticsearch, Seq, Grafana gibi birçok
-                                sistemle entegre çalışabilir. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Install-Package Serilog.Sinks.Seq
-
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.Seq("http://localhost:5341")
-    .CreateLogger();</code></pre>
-                                </div>
-                                Daha fazla bilgi için <a href="https://datalust.co/seq" target="_blank">Seq Resmi
-                                    Sitesi</a>'ni inceleyebilirsiniz.
-                            </li>
-                            <li><strong>Kullanıcı Tanımlı Log Seviyeleri:</strong> Varsayılan log seviyeleri dışında
-                                özel seviyeler oluşturabilirsiniz.</li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="5-serilog-best-practices">5. Serilog Kullanımı İçin En İyi Uygulamalar<a
-                                class="headerlink" href="#5-serilog-best-practices" title="Permanent link">&para;</a>
-                        </h2>
-                        <p>Serilog kullanırken aşağıdaki en iyi uygulamalar loglama sürecinizi optimize edebilir:</p>
-                        <ul>
-                            <li><strong>Performans:</strong> Loglama için asenkron <code>.WriteTo.Async()</code>
-                                metodunu kullanarak performans kaybını önleyin.</li>
-                            <li><strong>Loglama Kapsamı:</strong> Önemli sistem parçalarını ve hataları loglayarak
-                                uygulama üzerinde detaylı bir analiz yapabilirsiniz. Örnek:
-                                <div class="highlight">
-                                    <pre><code>using (LogContext.PushProperty("KullaniciId", kullaniciId))
-{
-    Log.Information("Sipariş oluşturuldu: {SiparisNo}", siparisNo);
-}</code></pre>
-                                </div>
-                            </li>
-                            <li><strong>Doğru Log Seviyesini Seçin:</strong> <code>Debug</code>,
-                                <code>Information</code>, <code>Warning</code>, <code>Error</code>, <code>Fatal</code>
-                                seviyelerini doğru kullanarak logları anlamlı hale getirin.
-                            </li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="6-serilog-performance-tips">6. Performans İpuçları<a class="headerlink"
-                                href="#6-serilog-performance-tips" title="Permanent link">&para;</a></h2>
-                        <p>Serilog, ağır loglama işlemlerinde performans sorunlarını minimize etmek için aşağıdaki
-                            stratejiler önerir:</p>
-                        <ul>
-                            <li><strong>Asenkron Loglama:</strong> Performansı artırmak için:
-                                <div class="highlight">
-                                    <pre><code>Log.Logger = new LoggerConfiguration()
-    .WriteTo.Async(a => a.Console())
-    .CreateLogger();</code></pre>
-                                </div>
-                            </li>
-                            <li><strong>Filtreleme:</strong> Gereksiz logları filtrelemek için
-                                <code>.Filter.ByExcluding()</code> metodunu kullanabilirsiniz. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Log.Logger = new LoggerConfiguration()
-    .Filter.ByExcluding(logEvent => logEvent.Level == LogEventLevel.Debug)
-    .CreateLogger();</code></pre>
-                                </div>
-                            </li>
-                            <li><strong>Dosya Rotasyonu:</strong> Log dosyalarının boyutunu sınırlayarak performansı
-                                kontrol altında tutun. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Log.Logger = new LoggerConfiguration()
-    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day, fileSizeLimitBytes: 10485760)
-    .CreateLogger();</code></pre>
-                                </div>
-                            </li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="7-serilog-debugging-errors">7. Hata Ayıklama ve Loglama<a class="headerlink"
-                                href="#7-serilog-debugging-errors" title="Permanent link">&para;</a></h2>
-                        <p>Serilog'u hata ayıklama ve sorun giderme için etkili bir şekilde kullanabilirsiniz:</p>
-                        <ul>
-                            <li><strong>Exception Detayları:</strong> Hataları daha ayrıntılı görmek için
-                                <code>Log.Error(ex, "Hata oluştu");</code> kullanın.
-                            </li>
-                            <li><strong>Minimum Seviye Belirleme:</strong> Hangi log seviyesinin işleneceğini belirlemek
-                                için <code>MinimumLevel</code> kullanabilirsiniz.</li>
-                            <li><strong>Hata Takibi:</strong> Hataları veri tabanında saklamak için <a
-                                    href="https://github.com/serilog/serilog-sinks-mssqlserver" target="_blank">MSSQL
-                                    Server Sink</a>'i kullanabilirsiniz.</li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="8-serilog-real-world-examples">8. Gerçek Hayatta Serilog Kullanımı<a class="headerlink"
-                                href="#8-serilog-real-world-examples" title="Permanent link">&para;</a></h2>
-                        <p>Serilog'un gerçek dünyadaki kullanımına dair örnekler:</p>
-                        <ul>
-                            <li><a href="https://devblogs.microsoft.com/aspnet/using-serilog-with-asp-net-core/"
-                                    target="_blank">ASP.NET Core ile Serilog Entegrasyonu</a></li>
-                            <li><a href="https://medium.com/@serilogtr" target="_blank">Türkçe Medium Makaleleri</a>
-                            </li>
-                            <li><a href="https://datalust.co/blog" target="_blank">Datalust Blog</a> (Resmi Serilog
-                                makaleleri)</li>
-
-                            <li><a href="https://learn.microsoft.com/tr-tr/aspnet/core/fundamentals/logging/?view=aspnetcore-9.0"
-                                    target="_blank">Microsoft Docs: ASP.NET Core Loglama</a></li>
-                            <li><a href="https://medium.com/@serilogtr/serilog-kullan%C4%B1m%C4%B1-6123d09a4f43"
-                                    target="_blank">Medium: Serilog Kullanımı</a></li>
-                            <li><a href="https://serilog.net/" target="_blank">Serilog Resmi Sitesi</a></li>
-
-
-                        </ul>
-                    </article>
-                </div>
+        <h2 id="8-kaynaklar">8. Kaynaklar<a class="headerlink" href="#8-kaynaklar" title="Permanent link">&para;</a></h2>
+        <ul>
+            <li><a href="https://learn.microsoft.com/en-us/dotnet/core/tools/" target="_blank">Microsoft .NET CLI Belgeleri</a></li>
+            <li><a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/" target="_blank">.NET Core Öğreticileri</a></li>
+            <li><a href="https://github.com/dotnet" target="_blank">.NET Resmi GitHub Sayfası</a></li>
+        </ul>
+    </article>
+</div>
 
                 <script>var target = document.getElementById(location.hash.slice(1)); target && target.name && (target.checked = target.name.startsWith("__tabbed_"))</script>
             </div>
