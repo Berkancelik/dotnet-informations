@@ -11,13 +11,13 @@
 
 
     <link rel="canonical"
-        href="https://berkancelik.github.io/dotnet-informations/dotnet-cli/dotnet-cli-ile-proje-sablonlari-kullanimi/">
+        href="https://berkancelik.github.io/dotnet-informations/dotnet-cli/dotnet-cli-ile-blazor-projesi-olusturma/">
 
 
-    <link rel="prev" href="../dotnet-cli-ile-yeni-proje-olusturma/">
+    <link rel="prev" href="../adding-openapi-support/">
 
 
-    <link rel="next" href="../dotnet-cli/dotnet-cli-ile-proje-sablonlari-kullanimi/">
+    <link rel="next" href="../dotnet-cli-ile-minimal-api-baslangici/">
 
 
     <link rel="icon" href="../../assets/images/favicon.png">
@@ -25,7 +25,7 @@
 
 
 
-    <title>Serilog - .Net Bilgileri</title>
+    <title>.NET CLI ile Blazor Projesi Oluşturma - .Net Bilgileri</title>
 
 
 
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
 
 
-        <a href="#dotnet-cli-project-templates" class="md-skip">
+        <a href="#dotnet-cli-blazor-project" class="md-skip">
             Ana içeriğe geç
         </a>
 
@@ -125,7 +125,7 @@
                     <div class="md-header__topic" data-md-component="header-topic">
                         <span class="md-ellipsis">
 
-                            .NET CLI ile Proje Şablonları Kullanımı
+                            .NET CLI ile Blazor Projesi Oluşturma
 
 
                         </span>
@@ -319,58 +319,9 @@
                                 </label>
                                 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
                                     <li class="md-nav__item">
-                                        <a href="#dotnet-cli-project-templates" class="md-nav__link">
+                                        <a href="#dotnet-cli-blazor-project" class="md-nav__link">
                                             <span class="md-ellipsis">
-                                                .NET CLI ile Proje Şablonları Kullanımı
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#1-dotnet-cli-templates" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                1. .NET CLI Şablonları
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#2-dotnet-new-template" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                2. .NET CLI ile Yeni Proje Oluşturma
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#3-dotnet-list-templates" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                3. Yüklü Şablonları Listeleme
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#4-dotnet-install-template" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                4. Yeni Bir Şablon Yükleme
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#5-dotnet-template-parameters" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                5. Şablon Parametreleri
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#6-dotnet-template-usage-best-practices" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                6. .NET CLI Şablonları Kullanımı İçin En İyi Uygulamalar
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#7-dotnet-template-resources" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                7. Kaynaklar
+                                                .NET CLI ile Blazor Projesi Oluşturma
                                             </span>
                                         </a>
                                     </li>
@@ -380,95 +331,64 @@
                     </div>
                 </div>
 
-
-
-
                 <div class="md-content" data-md-component="content">
                     <article class="md-content__inner md-typeset">
-                        <h1 id="dotnet-cli-project-templates">.NET CLI ile Proje Şablonları Kullanımı<a
-                                class="headerlink" href="#dotnet-cli-project-templates"
-                                title="Permanent link">&para;</a></h1>
-                        <p>.NET CLI, yeni projeler oluştururken ve mevcut projeleri yönetirken kullanılan güçlü bir
-                            araçtır. Bu araç sayesinde, çeşitli proje şablonlarını kolayca kullanarak hızlı bir şekilde
-                            projeler geliştirebilirsiniz.</p>
+                        <h1 id="dotnet-cli-blazor-project">.NET CLI ile Blazor Projesi Oluşturma<a class="headerlink"
+                                href="#dotnet-cli-blazor-project" title="Permanent link">&para;</a></h1>
+                        <p>Blazor, C# kullanarak web uygulamaları geliştirmek için kullanılan bir framework'tür. .NET
+                            CLI kullanarak kolayca Blazor projeleri oluşturabilirsiniz. Aşağıda, .NET CLI ile Blazor
+                            projesi oluşturma adımlarını bulabilirsiniz.</p>
                         <hr />
 
-                        <h2 id="1-dotnet-cli-templates">1. .NET CLI Şablonları<a class="headerlink"
-                                href="#1-dotnet-cli-templates" title="Permanent link">&para;</a></h2>
-                        <p>Proje şablonları, belirli bir uygulama tipi için temel yapıyı sağlar. .NET CLI ile
-                            kullanabileceğiniz başlıca proje şablonları şunlardır:</p>
-                        <ul>
-                            <li><strong>Console Application</strong>: Konsol uygulamaları için temel bir şablon.</li>
-                            <li><strong>ASP.NET Core Web API</strong>: Web API geliştirmek için başlangıç şablonu.</li>
-                            <li><strong>Class Library</strong>: Kütüphaneler oluşturmak için temel yapı.</li>
-                            <li><strong>Blazor WebAssembly</strong>: Blazor ile web uygulamaları geliştirmek için
-                                şablon.</li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="2-dotnet-new-template">2. .NET CLI ile Yeni Proje Oluşturma<a class="headerlink"
-                                href="#2-dotnet-new-template" title="Permanent link">&para;</a></h2>
-                        <p>Yeni bir proje başlatmak için .NET CLI kullanarak aşağıdaki komutları çalıştırabilirsiniz:
-                        </p>
+                        <h2 id="create-blazor-project">1. Blazor Projesi Oluşturmak<a class="headerlink"
+                                href="#create-blazor-project" title="Permanent link">&para;</a></h2>
+                        <p>Blazor WebAssembly veya Blazor Server projeleri oluşturabilirsiniz. Aşağıda, her iki proje
+                            türü için nasıl proje oluşturulacağı gösterilmektedir:</p>
                         <div class="highlight">
-                            <pre><code>dotnet new console -n MyConsoleApp
-dotnet new webapi -n MyWebApiApp</code></pre>
-                        </div>
-                        <p>Yukarıdaki örneklerde, bir konsol uygulaması ve bir Web API projesi oluşturulmuştur. .NET
-                            CLI, çeşitli parametreler ile projeyi özelleştirmenize imkan tanır.</p>
-                        <hr />
-
-                        <h2 id="3-dotnet-list-templates">3. Yüklü Şablonları Listeleme<a class="headerlink"
-                                href="#3-dotnet-list-templates" title="Permanent link">&para;</a></h2>
-                        <p>Yüklü tüm şablonları görmek için şu komutu kullanabilirsiniz:</p>
-                        <div class="highlight">
-                            <pre><code>dotnet new --list</code></pre>
-                        </div>
-                        <p>Bu komut, kullanılabilir tüm şablonları listeleyecektir.</p>
-                        <hr />
-
-                        <h2 id="4-dotnet-install-template">4. Yeni Bir Şablon Yükleme<a class="headerlink"
-                                href="#4-dotnet-install-template" title="Permanent link">&para;</a></h2>
-                        <p>Yeni şablonlar yüklemek için .NET CLI'yi kullanabilirsiniz. Örneğin:</p>
-                        <div class="highlight">
-                            <pre><code>dotnet new -i <template-package-name></code></pre>
-                        </div>
-                        <p>Bu komut, belirttiğiniz şablon paketini indirip kuracaktır.</p>
-                        <hr />
-
-                        <h2 id="5-dotnet-template-parameters">5. Şablon Parametreleri<a class="headerlink"
-                                href="#5-dotnet-template-parameters" title="Permanent link">&para;</a></h2>
-                        <p>Şablonları kullanırken belirli parametreleri de geçirebilirsiniz. Örnek olarak, bir Web API
-                            projesi oluştururken API portunu belirlemek için şu komutu kullanabilirsiniz:</p>
-                        <div class="highlight">
-                            <pre><code>dotnet new webapi -n MyWebApiApp --port 5001</code></pre>
+                            <pre><code>dotnet new blazorwasm -o BlazorApp</code></pre>
+                            <p><strong>Blazor WebAssembly</strong> projeleri için.</p>
+                            <pre><code>dotnet new blazorserver -o BlazorApp</code></pre>
+                            <p><strong>Blazor Server</strong> projeleri için.</p>
                         </div>
                         <hr />
 
-                        <h2 id="6-dotnet-template-usage-best-practices">6. .NET CLI Şablonları Kullanımı İçin En İyi
-                            Uygulamalar<a class="headerlink" href="#6-dotnet-template-usage-best-practices"
-                                title="Permanent link">&para;</a></h2>
-                        <ul>
-                            <li><strong>Şablonları Özelleştirme:</strong> Kendi şablonlarınızı oluşturun ve
-                                özelleştirin.</li>
-                            <li><strong>Parametre Kullanımı:</strong> Şablonlar ile esneklik sağlamak için parametreleri
-                                etkili bir şekilde kullanın.</li>
-                            <li><strong>Proje İsimlendirmesi:</strong> Proje isimlerini anlamlı ve tutarlı bir şekilde
-                                belirleyin.</li>
-                        </ul>
+                        <h2 id="run-blazor-project">2. Blazor Projesini Çalıştırmak<a class="headerlink"
+                                href="#run-blazor-project" title="Permanent link">&para;</a></h2>
+                        <p>Oluşturduğunuz Blazor projesini çalıştırmak için şu komutu kullanabilirsiniz:</p>
+                        <div class="highlight">
+                            <pre><code>dotnet run</code></pre>
+                        </div>
                         <hr />
 
-                        <h2 id="7-dotnet-template-resources">7. Kaynaklar<a class="headerlink"
-                                href="#7-dotnet-template-resources" title="Permanent link">&para;</a></h2>
-                        <p>Kaynaklar için aşağıdaki bağlantıları ziyaret edebilirsiniz:</p>
-                        <ul>
-                            <li><a href="https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new"
-                                    target="_blank">.NET CLI Documentation - dotnet new</a></li>
-                            <li><a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new-templates"
-                                    target="_blank">.NET Core Template Documentation</a></li>
-                        </ul>
+                        <h2 id="publish-blazor-project">3. Blazor Projesini Yayınlamak<a class="headerlink"
+                                href="#publish-blazor-project" title="Permanent link">&para;</a></h2>
+                        <p>Blazor uygulamanızı bir sunucuya dağıtmak için projeyi yayınlayabilirsiniz. Yayınlama işlemi
+                            için şu komut kullanılır:</p>
+                        <div class="highlight">
+                            <pre><code>dotnet publish -c Release -o ./publish</code></pre>
+                        </div>
+                        <hr />
+
+                        <h2 id="blazor-project-configuration">4. Blazor Proje Yapılandırması<a class="headerlink"
+                                href="#blazor-project-configuration" title="Permanent link">&para;</a></h2>
+                        <p>Blazor projesinde kullanılan ayarları değiştirmek için, proje dosyasını (.csproj)
+                            düzenleyebilirsiniz. Aşağıda örnek bir proje dosyası yapılandırması bulunmaktadır:</p>
+                        <div class="highlight">
+                            <pre><code>&lt;Project Sdk="Microsoft.NET.Sdk.Web"&gt;
+  &lt;PropertyGroup&gt;
+    &lt;TargetFramework&gt;net6.0&lt;/TargetFramework&gt;
+    &lt;RootNamespace&gt;BlazorApp&lt;/RootNamespace&gt;
+  &lt;/PropertyGroup&gt;
+&lt;/Project&gt;</code></pre>
+                        </div>
+                        <hr />
+
+                        <p>Daha fazla bilgi için <a
+                                href="https://learn.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-5.0"
+                                target="_blank">Blazor Resmi Belgeleri</a>'ni ziyaret edebilirsiniz.</p>
                     </article>
                 </div>
+
 
                 <script>var target = document.getElementById(location.hash.slice(1)); target && target.name && (target.checked = target.name.startsWith("__tabbed_"))</script>
             </div>
