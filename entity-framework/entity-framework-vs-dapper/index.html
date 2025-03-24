@@ -10,13 +10,13 @@
     <meta name="description" content="Bu blog .Net ile illgii bilgilerin paylaşıldığı blogdur.">
 
 
-    <link rel="canonical" href="https://berkancelik.github.io/dotnet-informations/logging/serilog/">
+    <link rel="canonical" href="https://berkancelik.github.io/dotnet-informations/entity-framework/entity-framework-vs-dapper/">
 
 
-    <link rel="prev" href="../../dotnet/dotnet-9-features/">
+    <link rel="prev" href="../repository-pattern-ve-unit-of-work-ile-entity-framework/">
 
 
-    <link rel="next" href="../nlog/">
+    <link rel="next" href="../dto-ile-entity-framework-entegrasyonu/">
 
 
     <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
 
 
 
-    <title>Serilog - .Net Bilgileri</title>
+    <title>Entity Framework ve Dapper Karşılaştırması: Hangi Durumda Hangisini Seçmeli? - .Net Bilgileri</title>
 
 
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
 
 
-        <a href="#serilog" class="md-skip">
+        <a href="#entity-framework-vs-dapper" class="md-skip">
             Ana içeriğe geç
         </a>
 
@@ -124,7 +124,7 @@
                     <div class="md-header__topic" data-md-component="header-topic">
                         <span class="md-ellipsis">
 
-                            Serilog
+                            Entity Framework ve Dapper Karşılaştırması: Hangi Durumda Hangisini Seçmeli?
 
                         </span>
                     </div>
@@ -307,298 +307,100 @@
 
 
 
-                <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-                    <div class="md-sidebar__scrollwrap">
-                        <div class="md-sidebar__inner">
+             <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+    <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+            <nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+                <label class="md-nav__title" for="__toc">
+                    <span class="md-nav__icon md-icon"></span>
+                    İçindekiler
+                </label>
+                <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
 
+                    <li class="md-nav__item">
+                        <a href="#entity-framework-vs-dapper" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                Entity Framework ve Dapper Karşılaştırması
+                            </span>
+                        </a>
+                    </li>
 
-                            <nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+                    <li class="md-nav__item">
+                        <a href="#1-entity-framework-avantajlari" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                1. Entity Framework'ün Avantajları
+                            </span>
+                        </a>
+                    </li>
 
+                    <li class="md-nav__item">
+                        <a href="#2-dapper-avantajlari" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                2. Dapper'ın Avantajları
+                            </span>
+                        </a>
+                    </li>
 
+                    <li class="md-nav__item">
+                        <a href="#3-hangi-durumda-hangisi-secilmeli" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                3. Hangi Durumda Hangisi Seçilmeli?
+                            </span>
+                        </a>
+                    </li>
 
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
 
+<div class="md-content" data-md-component="content">
+    <article class="md-content__inner md-typeset">
+        <h1 id="entity-framework-vs-dapper">Entity Framework ve Dapper Karşılaştırması: Hangi Durumda Hangisini Seçmeli? <a class="headerlink"
+                href="#entity-framework-vs-dapper" title="Permanent link">&para;</a></h1>
+        <p>Entity Framework ve Dapper, .NET ekosisteminde en yaygın kullanılan iki veri erişim teknolojisidir. Her ikisi de veritabanı ile iletişim kurarak veri çekme, güncelleme, ekleme gibi işlemleri yapabilmenizi sağlar, ancak her birinin farklı kullanım senaryoları ve avantajları bulunmaktadır. Bu yazıda, Entity Framework ve Dapper arasındaki farkları ve hangi durumu seçmeniz gerektiğini inceleyeceğiz.</p>
+        <hr />
 
+        <h2 id="1-entity-framework-avantajlari">1. Entity Framework'ün Avantajları <a class="headerlink"
+                href="#1-entity-framework-avantajlari" title="Permanent link">&para;</a></h2>
+        <p>Entity Framework (EF), .NET uygulamalarında veritabanı işlemleri yapmak için kullanılan bir ORM (Object-Relational Mapping) aracıdır. EF'nin en büyük avantajlarından biri, veritabanı işlemlerini nesnelerle eşleştirme işlemi yaparak SQL yazmayı gereksiz hale getirmesidir. Bu, yazılım geliştirme sürecini hızlandırabilir ve daha az hata yapmanıza yardımcı olabilir.</p>
+        <ul>
+            <li><strong>Veritabanı Bağımsızlığı:</strong> EF, veritabanı üzerinde çalışırken uygulamanın hangi veritabanı ile çalıştığını bilmez, bu da taşınabilirliği artırır.</li>
+            <li><strong>Modelleme ve Migration:</strong> EF, veritabanı şemasını modelleme ve migration işlemlerini otomatikleştirir.</li>
+            <li><strong>Veri Erişimi Kolaylığı:</strong> Entity Framework, LINQ gibi güçlü sorgulama yetenekleri ile veri erişimini kolaylaştırır.</li>
+        </ul>
+        <hr />
 
-                                <label class="md-nav__title" for="__toc">
-                                    <span class="md-nav__icon md-icon"></span>
-                                    İçindekiler
-                                </label>
-                                <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        <h2 id="2-dapper-avantajlari">2. Dapper'ın Avantajları <a class="headerlink"
+                href="#2-dapper-avantajlari" title="Permanent link">&para;</a></h2>
+        <p>Dapper, daha hafif ve hızlı bir mikro ORM'dir. SQL sorguları ile daha doğrudan etkileşime geçer ve sonuçları nesnelere dönüştürür. Dapper, Entity Framework'e göre çok daha hızlıdır ve çok daha düşük bellek kullanır. Ayrıca, Dapper, yazılım geliştiricilerin manuel SQL sorguları yazmalarına olanak tanır, bu da daha fazla kontrol sağlar.</p>
+        <ul>
+            <li><strong>Hız ve Performans:</strong> Dapper, minimalizmi sayesinde performans açısından daha hızlıdır.</li>
+            <li><strong>Kontrol ve Esneklik:</strong> Geliştiricilere doğrudan SQL sorguları yazma imkanı tanır, bu da daha fazla esneklik sağlar.</li>
+            <li><strong>Hafif ve Küçük:</strong> Dapper, çok az bağımlılıkla çalıştığı için uygulamanızda daha az bellek tüketir.</li>
+        </ul>
+        <hr />
 
-                                    <li class="md-nav__item">
-                                        <a href="#1-serilog-advantages" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                1. Serilog Avantajları
-                                            </span>
-                                        </a>
+        <h2 id="3-hangi-durumda-hangisi-secilmeli">3. Hangi Durumda Hangisi Seçilmeli? <a class="headerlink"
+                href="#3-hangi-durumda-hangisi-secilmeli" title="Permanent link">&para;</a></h2>
+        <p>Her iki araç da belirli durumlarda daha uygun olabilir. İşte hangi durumu seçmeniz gerektiğine dair bazı rehberlikler:</p>
+        <ul>
+            <li><strong>Entity Framework:</strong> Eğer veritabanı ile nesneler arasında güçlü bir eşleme yapmak istiyorsanız ve SQL ile fazla uğraşmak istemiyorsanız, Entity Framework sizin için ideal olabilir. Ayrıca, büyük projelerde veritabanı değişikliklerini yönetmek için migration kullanmanız gerekebilir.</li>
+            <li><strong>Dapper:</strong> Eğer performans, esneklik ve manuel SQL yazma yeteneği istiyorsanız, Dapper daha iyi bir seçim olabilir. Küçük, hızlı ve daha kontrol edilebilir bir çözüm arayanlar için uygundur.</li>
+        </ul>
+        <hr />
 
-                                    </li>
+        <p>Her iki araç da .NET projelerinde geniş bir kullanım alanına sahiptir ve ihtiyacınıza göre doğru seçimi yaparak veritabanı erişim işlemlerinizi daha verimli bir şekilde yönetebilirsiniz.</p>
 
-                                    <li class="md-nav__item">
-                                        <a href="#2-serilog-setup" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                2. Serilog Kurulumu
-                                            </span>
-                                        </a>
+        <p>Kaynaklar:</p>
+        <ul>
+            <li><a href="https://docs.microsoft.com/en-us/ef/core/" target="_blank">Entity Framework Core Documentation</a></li>
+            <li><a href="https://dapper-tutorial.net/" target="_blank">Dapper Tutorial</a></li>
+        </ul>
+    </article>
+</div>
 
-                                    </li>
-
-                                    <li class="md-nav__item">
-                                        <a href="#3-serilog-example" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                3. Serilog ile Basit Örnek
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#4-serilog-advanced-usage" class="md-nav__link">
-                                            <span class="md-ellipsis">
-
-                                                4. İleri Seviye Serilog Kullanımı
-
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#5-serilog-best-practices" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                5. Serilog Kullanımı İçin En İyi Uygulamalar
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#6-serilog-performance-tips" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                6. Performans İpuçları
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#7-serilog-debugging-errors" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                7. Hata Ayıklama ve Loglama
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#8-serilog-real-world-examples" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                8. Gerçek Hayatta Serilog Kullanımı
-                                            </span>
-                                        </a>
-
-                                    </li>
-
-
-
-                                </ul>
-
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="md-content" data-md-component="content">
-                    <article class="md-content__inner md-typeset">
-                        <h1 id="serilog-overview">Serilog Hakkında<a class="headerlink" href="#serilog-overview"
-                                title="Permanent link">&para;</a></h1>
-                        <p>Serilog, .NET projelerinde loglama için kullanılan güçlü ve popüler bir kütüphanedir.
-                            Özellikle JSON formatı, yapılandırılabilirlik ve geniş çıkış hedefleriyle modern loglama
-                            ihtiyaçlarını karşılar.</p>
-                        <hr />
-
-                        <h2 id="1-serilog-advantages">1. Serilog Avantajları<a class="headerlink"
-                                href="#1-serilog-advantages" title="Permanent link">&para;</a></h2>
-                        <ul>
-                            <li><strong>Yapılandırılabilirlik</strong>: JSON ve XML gibi yapılandırma dosyaları ile
-                                kolay entegrasyon sağlar.</li>
-                            <li><strong>Çıkış Hedefleri (Sinks)</strong>: Logları dosya, konsol, veya veri tabanlarına
-                                yönlendirebilirsiniz.</li>
-                            <li><strong>Zengin Veri</strong>: Yapısal loglama ile loglar daha okunabilir ve analiz
-                                edilebilir hale gelir.</li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="2-serilog-setup">2. Serilog Kurulumu<a class="headerlink" href="#2-serilog-setup"
-                                title="Permanent link">&para;</a></h2>
-                        <p>Serilog kütüphanesini projeye dahil etmek için <a href="https://www.nuget.org/"
-                                target="_blank">NuGet</a> paket yöneticisini kullanabilirsiniz. Aşağıdaki komutları
-                            çalıştırarak gerekli paketleri yükleyin:</p>
-                        <div class="highlight">
-                            <pre><code>Install-Package Serilog.AspNetCore
-Install-Package Serilog.Sinks.Console
-Install-Package Serilog.Sinks.File</code></pre>
-                        </div>
-                        <hr />
-
-                        <h2 id="3-serilog-example">3. Serilog ile Basit Örnek<a class="headerlink"
-                                href="#3-serilog-example" title="Permanent link">&para;</a></h2>
-                        <p>Aşağıda bir ASP.NET Core projesinde Serilog ile loglama örneği verilmiştir:</p>
-                        <div class="highlight">
-                            <pre><code>using Microsoft.AspNetCore.Builder;
-                                using Microsoft.Extensions.DependencyInjection;
-                                using Microsoft.Extensions.Hosting;
-                                using Serilog;
-
-                                var builder = WebApplication.CreateBuilder(args);
-
-                                // Serilog yapılandırması
-                                Log.Logger = new LoggerConfiguration()
-                                    .MinimumLevel.Debug()
-                                    .WriteTo.Console()
-                                    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
-                                    .CreateLogger();
-
-                                // Loglama için kullan
-                                builder.Host.UseSerilog();
-
-                                var app = builder.Build();
-
-                                app.MapGet("/", () =>
-                                {
-                                    Log.Information("Ana sayfa çağrıldı.");
-                                    return "Merhaba Serilog!";
-                                });
-
-                                app.MapGet("/hata", () =>
-                                {
-                                    Log.Error("Bir hata meydana geldi!");
-                                    return Results.Problem("Bir hata oluştu.");
-                                });
-
-                                app.Run();</code></pre>
-                        </div>
-                        <p>Daha fazla bilgi için <a href="https://serilog.net/" target="_blank">Serilog Resmi
-                                Sitesi</a>'ni ziyaret edebilirsiniz.</p>
-                        <hr />
-
-
-                        <h2 id="4-serilog-advanced-usage">4. İleri Seviye Serilog Kullanımı<a class="headerlink"
-                                href="#4-serilog-advanced-usage" title="Permanent link">&para;</a></h2>
-                        <p>Serilog, basit loglama işlemlerinin ötesine geçerek gelişmiş özellikler sunar. Aşağıda bu
-                            özelliklerden bazıları verilmiştir:</p>
-                        <ul>
-                            <li><strong>Yapısal Loglama:</strong> Logların okunabilirliği ve analizi için
-                                yapılandırılmış veri desteği sağlar. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Log.Information("Kullanıcı giriş yaptı: {@Kullanici}", new { KullaniciAdi = "Ahmet", Yas = 30 });</code></pre>
-                                </div>
-                                Bu log çıktısı JSON formatında saklanabilir.
-                            </li>
-                            <li><strong>Entegrasyonlar:</strong> Serilog, Elasticsearch, Seq, Grafana gibi birçok
-                                sistemle entegre çalışabilir. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Install-Package Serilog.Sinks.Seq
-
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.Seq("http://localhost:5341")
-    .CreateLogger();</code></pre>
-                                </div>
-                                Daha fazla bilgi için <a href="https://datalust.co/seq" target="_blank">Seq Resmi
-                                    Sitesi</a>'ni inceleyebilirsiniz.
-                            </li>
-                            <li><strong>Kullanıcı Tanımlı Log Seviyeleri:</strong> Varsayılan log seviyeleri dışında
-                                özel seviyeler oluşturabilirsiniz.</li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="5-serilog-best-practices">5. Serilog Kullanımı İçin En İyi Uygulamalar<a
-                                class="headerlink" href="#5-serilog-best-practices" title="Permanent link">&para;</a>
-                        </h2>
-                        <p>Serilog kullanırken aşağıdaki en iyi uygulamalar loglama sürecinizi optimize edebilir:</p>
-                        <ul>
-                            <li><strong>Performans:</strong> Loglama için asenkron <code>.WriteTo.Async()</code>
-                                metodunu kullanarak performans kaybını önleyin.</li>
-                            <li><strong>Loglama Kapsamı:</strong> Önemli sistem parçalarını ve hataları loglayarak
-                                uygulama üzerinde detaylı bir analiz yapabilirsiniz. Örnek:
-                                <div class="highlight">
-                                    <pre><code>using (LogContext.PushProperty("KullaniciId", kullaniciId))
-{
-    Log.Information("Sipariş oluşturuldu: {SiparisNo}", siparisNo);
-}</code></pre>
-                                </div>
-                            </li>
-                            <li><strong>Doğru Log Seviyesini Seçin:</strong> <code>Debug</code>,
-                                <code>Information</code>, <code>Warning</code>, <code>Error</code>, <code>Fatal</code>
-                                seviyelerini doğru kullanarak logları anlamlı hale getirin.
-                            </li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="6-serilog-performance-tips">6. Performans İpuçları<a class="headerlink"
-                                href="#6-serilog-performance-tips" title="Permanent link">&para;</a></h2>
-                        <p>Serilog, ağır loglama işlemlerinde performans sorunlarını minimize etmek için aşağıdaki
-                            stratejiler önerir:</p>
-                        <ul>
-                            <li><strong>Asenkron Loglama:</strong> Performansı artırmak için:
-                                <div class="highlight">
-                                    <pre><code>Log.Logger = new LoggerConfiguration()
-    .WriteTo.Async(a => a.Console())
-    .CreateLogger();</code></pre>
-                                </div>
-                            </li>
-                            <li><strong>Filtreleme:</strong> Gereksiz logları filtrelemek için
-                                <code>.Filter.ByExcluding()</code> metodunu kullanabilirsiniz. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Log.Logger = new LoggerConfiguration()
-    .Filter.ByExcluding(logEvent => logEvent.Level == LogEventLevel.Debug)
-    .CreateLogger();</code></pre>
-                                </div>
-                            </li>
-                            <li><strong>Dosya Rotasyonu:</strong> Log dosyalarının boyutunu sınırlayarak performansı
-                                kontrol altında tutun. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Log.Logger = new LoggerConfiguration()
-    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day, fileSizeLimitBytes: 10485760)
-    .CreateLogger();</code></pre>
-                                </div>
-                            </li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="7-serilog-debugging-errors">7. Hata Ayıklama ve Loglama<a class="headerlink"
-                                href="#7-serilog-debugging-errors" title="Permanent link">&para;</a></h2>
-                        <p>Serilog'u hata ayıklama ve sorun giderme için etkili bir şekilde kullanabilirsiniz:</p>
-                        <ul>
-                            <li><strong>Exception Detayları:</strong> Hataları daha ayrıntılı görmek için
-                                <code>Log.Error(ex, "Hata oluştu");</code> kullanın.
-                            </li>
-                            <li><strong>Minimum Seviye Belirleme:</strong> Hangi log seviyesinin işleneceğini belirlemek
-                                için <code>MinimumLevel</code> kullanabilirsiniz.</li>
-                            <li><strong>Hata Takibi:</strong> Hataları veri tabanında saklamak için <a
-                                    href="https://github.com/serilog/serilog-sinks-mssqlserver" target="_blank">MSSQL
-                                    Server Sink</a>'i kullanabilirsiniz.</li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="8-serilog-real-world-examples">8. Gerçek Hayatta Serilog Kullanımı<a class="headerlink"
-                                href="#8-serilog-real-world-examples" title="Permanent link">&para;</a></h2>
-                        <p>Serilog'un gerçek dünyadaki kullanımına dair örnekler:</p>
-                        <ul>
-                            <li><a href="https://devblogs.microsoft.com/aspnet/using-serilog-with-asp-net-core/"
-                                    target="_blank">ASP.NET Core ile Serilog Entegrasyonu</a></li>
-                            <li><a href="https://medium.com/@serilogtr" target="_blank">Türkçe Medium Makaleleri</a>
-                            </li>
-                            <li><a href="https://datalust.co/blog" target="_blank">Datalust Blog</a> (Resmi Serilog
-                                makaleleri)</li>
-
-                            <li><a href="https://learn.microsoft.com/tr-tr/aspnet/core/fundamentals/logging/?view=aspnetcore-9.0"
-                                    target="_blank">Microsoft Docs: ASP.NET Core Loglama</a></li>
-                            <li><a href="https://medium.com/@serilogtr/serilog-kullan%C4%B1m%C4%B1-6123d09a4f43"
-                                    target="_blank">Medium: Serilog Kullanımı</a></li>
-                            <li><a href="https://serilog.net/" target="_blank">Serilog Resmi Sitesi</a></li>
-
-
-                        </ul>
-                    </article>
-                </div>
 
                 <script>var target = document.getElementById(location.hash.slice(1)); target && target.name && (target.checked = target.name.startsWith("__tabbed_"))</script>
             </div>
