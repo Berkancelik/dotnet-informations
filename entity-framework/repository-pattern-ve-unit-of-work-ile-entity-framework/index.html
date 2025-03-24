@@ -82,7 +82,7 @@
     <div data-md-component="skip">
 
 
-        <a href="#ef-core-kullanimi" class="md-skip">
+        <a href="#repository-pattern" class="md-skip">
             Ana içeriğe geç
         </a>
 
@@ -306,8 +306,7 @@
                 </div>
 
 
-
-                <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
     <div class="md-sidebar__scrollwrap">
         <div class="md-sidebar__inner">
             <nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
@@ -316,31 +315,39 @@
                     İçindekiler
                 </label>
                 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+
                     <li class="md-nav__item">
-                        <a href="#ef-core-kullanimi" class="md-nav__link">
-                            <span class="md-ellipsis">LINQ Sorguları ile Entity Framework Kullanımı</span>
+                        <a href="#repository-pattern" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                Repository Pattern Nedir?
+                            </span>
                         </a>
                     </li>
+
                     <li class="md-nav__item">
-                        <a href="#1-linq-sorgulari" class="md-nav__link">
-                            <span class="md-ellipsis">1. LINQ ile Veri Sorgulama</span>
+                        <a href="#unit-of-work" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                Unit of Work Nedir?
+                            </span>
                         </a>
                     </li>
+
                     <li class="md-nav__item">
-                        <a href="#2-linq-sql-sorgusu" class="md-nav__link">
-                            <span class="md-ellipsis">2. LINQ ile SQL'e Benzer Sorgular</span>
+                        <a href="#ef-core-repository" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                Entity Framework Core ile Repository Pattern Kullanımı
+                            </span>
                         </a>
                     </li>
+
                     <li class="md-nav__item">
-                        <a href="#3-linq-ve-projeksiyon" class="md-nav__link">
-                            <span class="md-ellipsis">3. LINQ ve Projeksiyon Kullanımı</span>
+                        <a href="#unit-of-work-integration" class="md-nav__link">
+                            <span class="md-ellipsis">
+                                Unit of Work ve Repository'nin Birlikte Kullanımı
+                            </span>
                         </a>
                     </li>
-                    <li class="md-nav__item">
-                        <a href="#4-linq-join-operator" class="md-nav__link">
-                            <span class="md-ellipsis">4. LINQ Join Operatörü</span>
-                        </a>
-                    </li>
+
                 </ul>
             </nav>
         </div>
@@ -349,59 +356,139 @@
 
 <div class="md-content" data-md-component="content">
     <article class="md-content__inner md-typeset">
-        <h1 id="ef-core-kullanimi">LINQ Sorguları ile Entity Framework Kullanımı<a class="headerlink" href="#ef-core-kullanimi" title="Permanent link">&para;</a></h1>
-        <p>LINQ (Language Integrated Query), C# gibi .NET dillerinde veri sorgulamak için kullanılan bir dil özelliğidir. Entity Framework ile birleştiğinde, veritabanı işlemleri daha temiz ve daha verimli bir şekilde yapılabilir. Aşağıda, LINQ kullanarak Entity Framework ile nasıl sorgulama yapabileceğiniz hakkında bazı örnekler verilmiştir.</p>
+        <h1 id="repository-pattern">Repository Pattern ve Unit of Work ile Entity Framework Kullanımı<a class="headerlink"
+                href="#repository-pattern" title="Permanent link">&para;</a></h1>
+        <p>Repository Pattern, veri erişim katmanını soyutlayarak uygulamanın iş mantığı ile veritabanı arasındaki etkileşimi
+            yönetmeyi amaçlayan bir yazılım tasarım desenidir. Unit of Work deseni ise bir işlem birimi içerisinde birden fazla
+            repository ile yapılan işlemleri yönetmek için kullanılır. Bu iki desenin Entity Framework Core ile entegrasyonu,
+            uygulamanın bakımı ve test edilebilirliğini artırır.</p>
         <hr />
 
-        <h2 id="1-linq-sorgulari">1. LINQ ile Veri Sorgulama<a class="headerlink" href="#1-linq-sorgulari" title="Permanent link">&para;</a></h2>
-        <p>Entity Framework kullanarak veritabanındaki verileri LINQ ile sorgulamak için aşağıdaki örneği inceleyebilirsiniz:</p>
+        <h2 id="repository-pattern">1. Repository Pattern Nedir?<a class="headerlink"
+                href="#repository-pattern" title="Permanent link">&para;</a></h2>
+        <p>Repository Pattern, veriye erişimi soyutlayan bir katman sağlar. Bu katman, veritabanı ile etkileşimi
+            yönetmek için veri erişim mantığını kapsüller. Bu sayede, veri erişim kodunu uygulama mantığından
+            ayırarak daha temiz ve test edilebilir bir yapı elde ederiz. Repository, bir entity'yi yönetir ve CRUD (Create,
+            Read, Update, Delete) işlemleri sağlar.</p>
         <div class="highlight">
-            <pre><code>var students = context.Students
-                                .Where(s => s.Age > 18)
-                                .ToList();</code></pre>
+            <pre><code>public class ProductRepository : IProductRepository
+{
+    private readonly AppDbContext _context;
+
+    public ProductRepository(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public IEnumerable<Product> GetAll()
+    {
+        return _context.Products.ToList();
+    }
+
+    public Product GetById(int id)
+    {
+        return _context.Products.FirstOrDefault(p => p.Id == id);
+    }
+
+    public void Add(Product product)
+    {
+        _context.Products.Add(product);
+        _context.SaveChanges();
+    }
+
+    // Diğer CRUD işlemleri...
+}</code></pre>
         </div>
-        <p>Yukarıdaki örnekte, "Students" tablosundaki yaş değeri 18'den büyük olan öğrenciler listeye alınmaktadır. LINQ sorgusu ile çok hızlı bir şekilde veritabanından veri çekebilirsiniz.</p>
         <hr />
 
-        <h2 id="2-linq-sql-sorgusu">2. LINQ ile SQL'e Benzer Sorgular<a class="headerlink" href="#2-linq-sql-sorgusu" title="Permanent link">&para;</a></h2>
-        <p>LINQ ile SQL benzeri sorgular yapabilirsiniz. Örneğin:</p>
+        <h2 id="unit-of-work">2. Unit of Work Nedir?<a class="headerlink"
+                href="#unit-of-work" title="Permanent link">&para;</a></h2>
+        <p>Unit of Work, bir işlem birimi (transaction) içerisinde birden fazla repository ile yapılan işlemleri
+            yönetir. Bu desen, bir işlemde yapılan değişikliklerin tamamını başarıyla kaydetmeye veya
+            tüm değişiklikleri geri alarak (rollback) işlem durumunu korumaya yardımcı olur. Bu, veritabanı
+            işlemlerinin tutarlılığını sağlar.</p>
         <div class="highlight">
-            <pre><code>var query = from student in context.Students
-                        where student.Age > 18
-                        select student;</code></pre>
+            <pre><code>public class UnitOfWork : IUnitOfWork
+{
+    private readonly AppDbContext _context;
+    public IProductRepository Products { get; }
+
+    public UnitOfWork(AppDbContext context, IProductRepository productRepository)
+    {
+        _context = context;
+        Products = productRepository;
+    }
+
+    public void SaveChanges()
+    {
+        _context.SaveChanges();
+    }
+}</code></pre>
         </div>
-        <p>Bu sorgu, SQL dilindeki "SELECT * FROM Students WHERE Age > 18" sorgusunun LINQ karşılığıdır.</p>
         <hr />
 
-        <h2 id="3-linq-ve-projeksiyon">3. LINQ ve Projeksiyon Kullanımı<a class="headerlink" href="#3-linq-ve-projeksiyon" title="Permanent link">&para;</a></h2>
-        <p>Projeksiyon, veriler üzerinde dönüşüm yapmanızı sağlar. Aşağıdaki örnekte, sadece öğrenci adlarını çekiyoruz:</p>
+        <h2 id="ef-core-repository">3. Entity Framework Core ile Repository Pattern Kullanımı<a class="headerlink"
+                href="#ef-core-repository" title="Permanent link">&para;</a></h2>
+        <p>Entity Framework Core (EF Core), veritabanı işlemleri için kullanılan popüler bir ORM (Object Relational
+            Mapping) aracıdır. EF Core ile repository pattern'i kullanarak veritabanı işlemlerini daha verimli ve
+            test edilebilir hale getirebiliriz. Aşağıda EF Core ile repository kullanımına örnek bir kod verilmiştir:</p>
         <div class="highlight">
-            <pre><code>var studentNames = context.Students
-                                     .Where(s => s.Age > 18)
-                                     .Select(s => s.Name)
-                                     .ToList();</code></pre>
+            <pre><code>public class AppDbContext : DbContext
+{
+    public DbSet<Product> Products { get; set; }
+}
+
+public class ProductRepository : IProductRepository
+{
+    private readonly AppDbContext _context;
+
+    public ProductRepository(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public IEnumerable<Product> GetAll()
+    {
+        return _context.Products.ToList();
+    }
+}</code></pre>
         </div>
-        <p>Bu sorgu ile sadece "Name" sütununu alır ve veritabanı işlemi bu şekilde optimize edilir.</p>
         <hr />
 
-        <h2 id="4-linq-join-operator">4. LINQ Join Operatörü<a class="headerlink" href="#4-linq-join-operator" title="Permanent link">&para;</a></h2>
-        <p>LINQ, veritabanındaki farklı tablolardan veri birleştirmek için join operatörünü kullanmanıza olanak tanır. Aşağıdaki örnekte, "Students" ve "Courses" tablolarını join ediyoruz:</p>
+        <h2 id="unit-of-work-integration">4. Unit of Work ve Repository'nin Birlikte Kullanımı<a class="headerlink"
+                href="#unit-of-work-integration" title="Permanent link">&para;</a></h2>
+        <p>Unit of Work ve Repository birlikte kullanılarak daha verimli bir veri erişim katmanı oluşturulabilir. Bu
+            yapıyı, bir servis sınıfında kullanarak uygulamanın farklı işlevlerini daha modüler hale getirebiliriz.
+            Aşağıda bir servis sınıfı ile Unit of Work ve Repository kullanımına örnek verilmiştir:</p>
         <div class="highlight">
-            <pre><code>var studentCourses = from student in context.Students
-                                 join enrollment in context.Enrollments
-                                 on student.Id equals enrollment.StudentId
-                                 select new 
-                                 {
-                                     student.Name,
-                                     enrollment.CourseId
-                                 };</code></pre>
+            <pre><code>public class ProductService
+{
+    private readonly IUnitOfWork _unitOfWork;
+
+    public ProductService(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public IEnumerable<Product> GetAllProducts()
+    {
+        return _unitOfWork.Products.GetAll();
+    }
+
+    public void AddProduct(Product product)
+    {
+        _unitOfWork.Products.Add(product);
+        _unitOfWork.SaveChanges();
+    }
+}</code></pre>
         </div>
-        <p>Bu sorgu ile öğrenciler ve hangi kursları aldıkları birleştirilmiş olur.</p>
         <hr />
 
-        <p>Daha fazla bilgi için <a href="https://docs.microsoft.com/en-us/ef/core/" target="_blank">Entity Framework Core Belgeleri</a>'ni ziyaret edebilirsiniz.</p>
+        <p>Daha fazla bilgi için <a href="https://learn.microsoft.com/en-us/ef/core/" target="_blank">Entity Framework
+                Core Belgeleri</a>'ni ziyaret edebilirsiniz.</p>
     </article>
 </div>
+
 
                 <script>var target = document.getElementById(location.hash.slice(1)); target && target.name && (target.checked = target.name.startsWith("__tabbed_"))</script>
             </div>
