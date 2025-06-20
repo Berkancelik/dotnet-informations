@@ -10,13 +10,13 @@
     <meta name="description" content="Bu blog .Net ile illgii bilgilerin paylaşıldığı blogdur.">
 
 
-    <link rel="canonical" href="https://berkancelik.github.io/dotnet-informations/logging/serilog/">
+    <link rel="canonical" href="https://berkancelik.github.io/dotnet-informations/dapper/dapper-ve-unit-of-work-deseni/">
 
 
-    <link rel="prev" href="../../dotnet/dotnet-9-features/">
+    <link rel="prev" href="../dapper-ile-async-await-kullanimi/">
 
 
-    <link rel="next" href="../nlog/">
+    <link rel="next" href="../dapper-ile-cache-yonetimi/">
 
 
     <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
 
 
 
-    <title>Serilog - .Net Bilgileri</title>
+    <title>Dapper ve Unit of Work Deseni - .Net Bilgileri</title>
 
 
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
 
 
-        <a href="#serilog" class="md-skip">
+        <a href="#dapper-ve-unit-of-work-deseni" class="md-skip">
             Ana içeriğe geç
         </a>
 
@@ -124,7 +124,7 @@
                     <div class="md-header__topic" data-md-component="header-topic">
                         <span class="md-ellipsis">
 
-                            Serilog
+                              Dapper ve Unit of Work Deseni
 
                         </span>
                     </div>
@@ -307,298 +307,159 @@
 
 
 
-                <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-                    <div class="md-sidebar__scrollwrap">
-                        <div class="md-sidebar__inner">
+            <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+    <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+            <nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+                <label class="md-nav__title" for="__toc">
+                    <span class="md-nav__icon md-icon"></span>
+                    İçindekiler
+                </label>
+                <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+                    <li class="md-nav__item">
+                        <a href="#dapper-ve-unit-of-work-deseni" class="md-nav__link">
+                            <span class="md-ellipsis">Dapper ve Unit of Work Deseni</span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#unit-of-work-nedir" class="md-nav__link">
+                            <span class="md-ellipsis">Unit of Work Nedir?</span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#dapper-ile-unit-of-work-kullanimi" class="md-nav__link">
+                            <span class="md-ellipsis">Dapper ile Unit of Work Kullanımı</span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#ornek-uygulama" class="md-nav__link">
+                            <span class="md-ellipsis">Örnek Uygulama</span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#avantajlari" class="md-nav__link">
+                            <span class="md-ellipsis">Avantajları</span>
+                        </a>
+                    </li>
+                    <li class="md-nav__item">
+                        <a href="#kaynaklar" class="md-nav__link">
+                            <span class="md-ellipsis">Kaynaklar</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
 
+<div class="md-content" data-md-component="content">
+    <article class="md-content__inner md-typeset">
+        <h1 id="dapper-ve-unit-of-work-deseni">Dapper ve Unit of Work Deseni<a class="headerlink" href="#dapper-ve-unit-of-work-deseni" title="Permanent link">&para;</a></h1>
+        <p>Dapper, mikro ORM (Object Relational Mapper) kütüphanesi olarak .NET projelerinde sıklıkla tercih edilmektedir. Unit of Work (UoW) deseni ise veri işlemleri sırasında yapılan işlemlerin bir bütün olarak ele alınmasını sağlar. Bu iki yapının beraber kullanımı, veri tutarlılığı ve işlem güvenliği açısından önemli faydalar sağlar.</p>
+        <hr/>
 
-                            <nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+        <h2 id="unit-of-work-nedir">Unit of Work Nedir?<a class="headerlink" href="#unit-of-work-nedir" title="Permanent link">&para;</a></h2>
+        <p>Unit of Work deseni, bir işlem (transaction) süresince yapılan tüm veritabanı işlemlerini bir arada tutarak, işlem sonunda hepsinin başarılı olması durumunda commit eder; aksi halde rollback işlemi yapılır. Böylece veri tutarlılığı sağlanır.</p>
+        <p><strong>Amaçları:</strong></p>
+        <ul>
+            <li>Transaction yönetimini kolaylaştırmak</li>
+            <li>Repository desenleriyle birlikte çalışmak</li>
+            <li>Veritabanı işlemlerini tek bir noktadan kontrol etmek</li>
+        </ul>
+        <hr/>
 
+        <h2 id="dapper-ile-unit-of-work-kullanimi">Dapper ile Unit of Work Kullanımı<a class="headerlink" href="#dapper-ile-unit-of-work-kullanimi" title="Permanent link">&para;</a></h2>
+        <p>Dapper kendisi doğrudan bir Unit of Work desteği sunmaz. Ancak <code>IDbTransaction</code> arayüzü kullanılarak UoW deseni uygulanabilir.</p>
+        <p><strong>Adımlar:</strong></p>
+        <ol>
+            <li>Tek bir <code>IDbConnection</code> üzerinden transaction başlatılır.</li>
+            <li>Farklı repository'ler aynı transaction'ı kullanır.</li>
+            <li>İşlemler başarılı ise <code>Commit()</code>, hata varsa <code>Rollback()</code> çağrılır.</li>
+        </ol>
+        <hr/>
 
-
-
-
-
-                                <label class="md-nav__title" for="__toc">
-                                    <span class="md-nav__icon md-icon"></span>
-                                    İçindekiler
-                                </label>
-                                <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-
-                                    <li class="md-nav__item">
-                                        <a href="#1-serilog-advantages" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                1. Serilog Avantajları
-                                            </span>
-                                        </a>
-
-                                    </li>
-
-                                    <li class="md-nav__item">
-                                        <a href="#2-serilog-setup" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                2. Serilog Kurulumu
-                                            </span>
-                                        </a>
-
-                                    </li>
-
-                                    <li class="md-nav__item">
-                                        <a href="#3-serilog-example" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                3. Serilog ile Basit Örnek
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#4-serilog-advanced-usage" class="md-nav__link">
-                                            <span class="md-ellipsis">
-
-                                                4. İleri Seviye Serilog Kullanımı
-
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#5-serilog-best-practices" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                5. Serilog Kullanımı İçin En İyi Uygulamalar
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#6-serilog-performance-tips" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                6. Performans İpuçları
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#7-serilog-debugging-errors" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                7. Hata Ayıklama ve Loglama
-                                            </span>
-                                        </a>
-
-                                    </li>
-                                    <li class="md-nav__item">
-                                        <a href="#8-serilog-real-world-examples" class="md-nav__link">
-                                            <span class="md-ellipsis">
-                                                8. Gerçek Hayatta Serilog Kullanımı
-                                            </span>
-                                        </a>
-
-                                    </li>
-
-
-
-                                </ul>
-
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="md-content" data-md-component="content">
-                    <article class="md-content__inner md-typeset">
-                        <h1 id="serilog-overview">Serilog Hakkında<a class="headerlink" href="#serilog-overview"
-                                title="Permanent link">&para;</a></h1>
-                        <p>Serilog, .NET projelerinde loglama için kullanılan güçlü ve popüler bir kütüphanedir.
-                            Özellikle JSON formatı, yapılandırılabilirlik ve geniş çıkış hedefleriyle modern loglama
-                            ihtiyaçlarını karşılar.</p>
-                        <hr />
-
-                        <h2 id="1-serilog-advantages">1. Serilog Avantajları<a class="headerlink"
-                                href="#1-serilog-advantages" title="Permanent link">&para;</a></h2>
-                        <ul>
-                            <li><strong>Yapılandırılabilirlik</strong>: JSON ve XML gibi yapılandırma dosyaları ile
-                                kolay entegrasyon sağlar.</li>
-                            <li><strong>Çıkış Hedefleri (Sinks)</strong>: Logları dosya, konsol, veya veri tabanlarına
-                                yönlendirebilirsiniz.</li>
-                            <li><strong>Zengin Veri</strong>: Yapısal loglama ile loglar daha okunabilir ve analiz
-                                edilebilir hale gelir.</li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="2-serilog-setup">2. Serilog Kurulumu<a class="headerlink" href="#2-serilog-setup"
-                                title="Permanent link">&para;</a></h2>
-                        <p>Serilog kütüphanesini projeye dahil etmek için <a href="https://www.nuget.org/"
-                                target="_blank">NuGet</a> paket yöneticisini kullanabilirsiniz. Aşağıdaki komutları
-                            çalıştırarak gerekli paketleri yükleyin:</p>
-                        <div class="highlight">
-                            <pre><code>Install-Package Serilog.AspNetCore
-Install-Package Serilog.Sinks.Console
-Install-Package Serilog.Sinks.File</code></pre>
-                        </div>
-                        <hr />
-
-                        <h2 id="3-serilog-example">3. Serilog ile Basit Örnek<a class="headerlink"
-                                href="#3-serilog-example" title="Permanent link">&para;</a></h2>
-                        <p>Aşağıda bir ASP.NET Core projesinde Serilog ile loglama örneği verilmiştir:</p>
-                        <div class="highlight">
-                            <pre><code>using Microsoft.AspNetCore.Builder;
-                                using Microsoft.Extensions.DependencyInjection;
-                                using Microsoft.Extensions.Hosting;
-                                using Serilog;
-
-                                var builder = WebApplication.CreateBuilder(args);
-
-                                // Serilog yapılandırması
-                                Log.Logger = new LoggerConfiguration()
-                                    .MinimumLevel.Debug()
-                                    .WriteTo.Console()
-                                    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
-                                    .CreateLogger();
-
-                                // Loglama için kullan
-                                builder.Host.UseSerilog();
-
-                                var app = builder.Build();
-
-                                app.MapGet("/", () =>
-                                {
-                                    Log.Information("Ana sayfa çağrıldı.");
-                                    return "Merhaba Serilog!";
-                                });
-
-                                app.MapGet("/hata", () =>
-                                {
-                                    Log.Error("Bir hata meydana geldi!");
-                                    return Results.Problem("Bir hata oluştu.");
-                                });
-
-                                app.Run();</code></pre>
-                        </div>
-                        <p>Daha fazla bilgi için <a href="https://serilog.net/" target="_blank">Serilog Resmi
-                                Sitesi</a>'ni ziyaret edebilirsiniz.</p>
-                        <hr />
-
-
-                        <h2 id="4-serilog-advanced-usage">4. İleri Seviye Serilog Kullanımı<a class="headerlink"
-                                href="#4-serilog-advanced-usage" title="Permanent link">&para;</a></h2>
-                        <p>Serilog, basit loglama işlemlerinin ötesine geçerek gelişmiş özellikler sunar. Aşağıda bu
-                            özelliklerden bazıları verilmiştir:</p>
-                        <ul>
-                            <li><strong>Yapısal Loglama:</strong> Logların okunabilirliği ve analizi için
-                                yapılandırılmış veri desteği sağlar. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Log.Information("Kullanıcı giriş yaptı: {@Kullanici}", new { KullaniciAdi = "Ahmet", Yas = 30 });</code></pre>
-                                </div>
-                                Bu log çıktısı JSON formatında saklanabilir.
-                            </li>
-                            <li><strong>Entegrasyonlar:</strong> Serilog, Elasticsearch, Seq, Grafana gibi birçok
-                                sistemle entegre çalışabilir. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Install-Package Serilog.Sinks.Seq
-
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.Seq("http://localhost:5341")
-    .CreateLogger();</code></pre>
-                                </div>
-                                Daha fazla bilgi için <a href="https://datalust.co/seq" target="_blank">Seq Resmi
-                                    Sitesi</a>'ni inceleyebilirsiniz.
-                            </li>
-                            <li><strong>Kullanıcı Tanımlı Log Seviyeleri:</strong> Varsayılan log seviyeleri dışında
-                                özel seviyeler oluşturabilirsiniz.</li>
-                        </ul>
-                        <hr />
-
-                        <h2 id="5-serilog-best-practices">5. Serilog Kullanımı İçin En İyi Uygulamalar<a
-                                class="headerlink" href="#5-serilog-best-practices" title="Permanent link">&para;</a>
-                        </h2>
-                        <p>Serilog kullanırken aşağıdaki en iyi uygulamalar loglama sürecinizi optimize edebilir:</p>
-                        <ul>
-                            <li><strong>Performans:</strong> Loglama için asenkron <code>.WriteTo.Async()</code>
-                                metodunu kullanarak performans kaybını önleyin.</li>
-                            <li><strong>Loglama Kapsamı:</strong> Önemli sistem parçalarını ve hataları loglayarak
-                                uygulama üzerinde detaylı bir analiz yapabilirsiniz. Örnek:
-                                <div class="highlight">
-                                    <pre><code>using (LogContext.PushProperty("KullaniciId", kullaniciId))
+        <h2 id="ornek-uygulama">Örnek Uygulama<a class="headerlink" href="#ornek-uygulama" title="Permanent link">&para;</a></h2>
+        <p>Aşağıda Dapper ile Unit of Work deseninin nasıl uygulanabileceği örneklenmiştir:</p>
+        <div class="highlight">
+<pre><code>public interface IUnitOfWork : IDisposable
 {
-    Log.Information("Sipariş oluşturuldu: {SiparisNo}", siparisNo);
-}</code></pre>
-                                </div>
-                            </li>
-                            <li><strong>Doğru Log Seviyesini Seçin:</strong> <code>Debug</code>,
-                                <code>Information</code>, <code>Warning</code>, <code>Error</code>, <code>Fatal</code>
-                                seviyelerini doğru kullanarak logları anlamlı hale getirin.
-                            </li>
-                        </ul>
-                        <hr />
+    IDbConnection Connection { get; }
+    IDbTransaction Transaction { get; }
+    void Commit();
+    void Rollback();
+}
 
-                        <h2 id="6-serilog-performance-tips">6. Performans İpuçları<a class="headerlink"
-                                href="#6-serilog-performance-tips" title="Permanent link">&para;</a></h2>
-                        <p>Serilog, ağır loglama işlemlerinde performans sorunlarını minimize etmek için aşağıdaki
-                            stratejiler önerir:</p>
-                        <ul>
-                            <li><strong>Asenkron Loglama:</strong> Performansı artırmak için:
-                                <div class="highlight">
-                                    <pre><code>Log.Logger = new LoggerConfiguration()
-    .WriteTo.Async(a => a.Console())
-    .CreateLogger();</code></pre>
-                                </div>
-                            </li>
-                            <li><strong>Filtreleme:</strong> Gereksiz logları filtrelemek için
-                                <code>.Filter.ByExcluding()</code> metodunu kullanabilirsiniz. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Log.Logger = new LoggerConfiguration()
-    .Filter.ByExcluding(logEvent => logEvent.Level == LogEventLevel.Debug)
-    .CreateLogger();</code></pre>
-                                </div>
-                            </li>
-                            <li><strong>Dosya Rotasyonu:</strong> Log dosyalarının boyutunu sınırlayarak performansı
-                                kontrol altında tutun. Örnek:
-                                <div class="highlight">
-                                    <pre><code>Log.Logger = new LoggerConfiguration()
-    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day, fileSizeLimitBytes: 10485760)
-    .CreateLogger();</code></pre>
-                                </div>
-                            </li>
-                        </ul>
-                        <hr />
+public class UnitOfWork : IUnitOfWork
+{
+    public IDbConnection Connection { get; }
+    public IDbTransaction Transaction { get; private set; }
 
-                        <h2 id="7-serilog-debugging-errors">7. Hata Ayıklama ve Loglama<a class="headerlink"
-                                href="#7-serilog-debugging-errors" title="Permanent link">&para;</a></h2>
-                        <p>Serilog'u hata ayıklama ve sorun giderme için etkili bir şekilde kullanabilirsiniz:</p>
-                        <ul>
-                            <li><strong>Exception Detayları:</strong> Hataları daha ayrıntılı görmek için
-                                <code>Log.Error(ex, "Hata oluştu");</code> kullanın.
-                            </li>
-                            <li><strong>Minimum Seviye Belirleme:</strong> Hangi log seviyesinin işleneceğini belirlemek
-                                için <code>MinimumLevel</code> kullanabilirsiniz.</li>
-                            <li><strong>Hata Takibi:</strong> Hataları veri tabanında saklamak için <a
-                                    href="https://github.com/serilog/serilog-sinks-mssqlserver" target="_blank">MSSQL
-                                    Server Sink</a>'i kullanabilirsiniz.</li>
-                        </ul>
-                        <hr />
+    public UnitOfWork(string connectionString)
+    {
+        Connection = new SqlConnection(connectionString);
+        Connection.Open();
+        Transaction = Connection.BeginTransaction();
+    }
 
-                        <h2 id="8-serilog-real-world-examples">8. Gerçek Hayatta Serilog Kullanımı<a class="headerlink"
-                                href="#8-serilog-real-world-examples" title="Permanent link">&para;</a></h2>
-                        <p>Serilog'un gerçek dünyadaki kullanımına dair örnekler:</p>
-                        <ul>
-                            <li><a href="https://devblogs.microsoft.com/aspnet/using-serilog-with-asp-net-core/"
-                                    target="_blank">ASP.NET Core ile Serilog Entegrasyonu</a></li>
-                            <li><a href="https://medium.com/@serilogtr" target="_blank">Türkçe Medium Makaleleri</a>
-                            </li>
-                            <li><a href="https://datalust.co/blog" target="_blank">Datalust Blog</a> (Resmi Serilog
-                                makaleleri)</li>
+    public void Commit()
+    {
+        Transaction?.Commit();
+        Dispose();
+    }
 
-                            <li><a href="https://learn.microsoft.com/tr-tr/aspnet/core/fundamentals/logging/?view=aspnetcore-9.0"
-                                    target="_blank">Microsoft Docs: ASP.NET Core Loglama</a></li>
-                            <li><a href="https://medium.com/@serilogtr/serilog-kullan%C4%B1m%C4%B1-6123d09a4f43"
-                                    target="_blank">Medium: Serilog Kullanımı</a></li>
-                            <li><a href="https://serilog.net/" target="_blank">Serilog Resmi Sitesi</a></li>
+    public void Rollback()
+    {
+        Transaction?.Rollback();
+        Dispose();
+    }
 
+    public void Dispose()
+    {
+        Transaction?.Dispose();
+        Connection?.Dispose();
+    }
+}
+</code></pre>
+        </div>
+        <p>Repository örneği:</p>
+        <div class="highlight">
+<pre><code>public class ProductRepository
+{
+    private readonly IUnitOfWork _unitOfWork;
 
-                        </ul>
-                    </article>
-                </div>
+    public ProductRepository(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public void AddProduct(Product product)
+    {
+        var sql = "INSERT INTO Products (Name, Price) VALUES (@Name, @Price)";
+        _unitOfWork.Connection.Execute(sql, product, _unitOfWork.Transaction);
+    }
+}
+</code></pre>
+        </div>
+        <hr/>
+
+        <h2 id="avantajlari">Avantajları<a class="headerlink" href="#avantajlari" title="Permanent link">&para;</a></h2>
+        <ul>
+            <li>Transaction yönetimini merkezi hale getirir.</li>
+            <li>Repository desenleri ile uyumlu çalışır.</li>
+            <li>Veritabanı bütünlüğü sağlanır.</li>
+            <li>Test edilebilirliği artırır.</li>
+        </ul>
+        <hr/>
+
+        <h2 id="kaynaklar">Kaynaklar<a class="headerlink" href="#kaynaklar" title="Permanent link">&para;</a></h2>
+        <ul>
+            <li><a href="https://dapper-tutorial.net" target="_blank">https://dapper-tutorial.net</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.data.idbtransaction" target="_blank">IDbTransaction Microsoft Docs</a></li>
+            <li><a href="https://martinfowler.com/eaaCatalog/unitOfWork.html" target="_blank">Martin Fowler - Unit of Work</a></li>
+        </ul>
+    </article>
+</div>
+
 
                 <script>var target = document.getElementById(location.hash.slice(1)); target && target.name && (target.checked = target.name.startsWith("__tabbed_"))</script>
             </div>
